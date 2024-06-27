@@ -28,26 +28,45 @@
 
     <div class="banner" style="background-image: url('static/assets/banner.jpg');">
         <div class="banner-text">
-            <h1 class="banner-title">Encuentra oportunidades de voluntariado para ti</h1>
+            <h1>Encuentra oportunidades de voluntariado para ti</h1>
         </div>
     </div>
     
-
     <main>
         <div class="carousel">
-            <div class="carousel-item" style="border-color: blue;">
+            <div class="carousel-item" style="border-color: black;">
                 <img src="{{ url_for('static', filename='assets/voluntariado_ingles.png') }}" alt="Voluntariado Enseñanza de Inglés">
                 <h2>Voluntariado Enseñanza de Inglés</h2>
                 <p>Ubicación: Zaña, Perú<br>Fecha: 12/07/2024</p>
-                <p>Descripción: Enseña inglés a estudiantes de la región rural de Zaña...</p>
+                <p>Descripción: Si te unes al Programa de enseñanza de inglés, entonces tu función principal será enseñar inglés a estudiantes peruanos locales.</p>
             </div>
-            <div class="carousel-item" style="border-color: yellow;">
+            <div class="carousel-item" style="border-color: black;">
                 <img src="{{ url_for('static', filename='assets/centro_rescate_amazonas.png') }}" alt="Proyecto Centro de Rescate de Animales del Amazonas">
                 <h2>Proyecto Centro de Rescate de Animales del Amazonas</h2>
                 <p>Ubicación: Puyo, Ecuador<br>Fecha: 18/07/2024</p>
                 <p>Descripción: Ayuda a rescatar y rehabilitar animales de la selva amazónica...</p>
             </div>
-            <div class="carousel-item" style="border-color: red;">
+            <div class="carousel-item" style="border-color: black;">
+                <img src="{{ url_for('static', filename='assets/ninos_calle.png') }}" alt="Programa Niños de la Calle">
+                <h2>Programa Niños de la Calle</h2>
+                <p>Ubicación: Quito, Ecuador<br>Fecha: 24/07/2024</p>
+                <p>Descripción: Trabaja con niños de la calle y bríndales apoyo educativo...</p>
+            </div>
+
+
+            <div class="carousel-item" style="border-color: black;">
+                <img src="{{ url_for('static', filename='assets/voluntariado_ingles.png') }}" alt="Voluntariado Enseñanza de Inglés">
+                <h2>Voluntariado Enseñanza de Inglés</h2>
+                <p>Ubicación: Zaña, Perú<br>Fecha: 12/07/2024</p>
+                <p>Descripción: Si te unes al Programa de enseñanza de inglés, entonces tu función principal será enseñar inglés a estudiantes peruanos locales.</p>
+            </div>
+            <div class="carousel-item" style="border-color: black;">
+                <img src="{{ url_for('static', filename='assets/centro_rescate_amazonas.png') }}" alt="Proyecto Centro de Rescate de Animales del Amazonas">
+                <h2>Proyecto Centro de Rescate de Animales del Amazonas</h2>
+                <p>Ubicación: Puyo, Ecuador<br>Fecha: 18/07/2024</p>
+                <p>Descripción: Ayuda a rescatar y rehabilitar animales de la selva amazónica...</p>
+            </div>
+            <div class="carousel-item" style="border-color: black;">
                 <img src="{{ url_for('static', filename='assets/ninos_calle.png') }}" alt="Programa Niños de la Calle">
                 <h2>Programa Niños de la Calle</h2>
                 <p>Ubicación: Quito, Ecuador<br>Fecha: 24/07/2024</p>
@@ -59,14 +78,16 @@
     <footer id="footer">
         <div class="about">
             <h3>¿Qué es VolunteerVision?</h3>
-            <p>VolunteerVision es la aplicación que conecta personas que desean...</p>
+            <p>VolunteerVision es la aplicación que conecta directamente a personas voluntarias con entidades con proyectos de voluntariado. ¿Quieres unirte?</p>
         </div>
         <div class="social">
+            <h4>Redes Sociales</h4>
             <a href="#"><img src="static/assets/facebook.png" alt="Facebook"></a>
             <a href="#"><img src="static/assets/instagram.png" alt="Instagram"></a>
-            <a href="#"><img src="static/assets/x.png" alt="LinkedIn"></a>
+            <a href="#"><img src="static/assets/x.png" alt="X"></a>
         </div>
     </footer>
-    
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

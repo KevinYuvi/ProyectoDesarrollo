@@ -1,4 +1,4 @@
-/* Reset some default styles */
+/* Reset de algunos estilos por defecto */
 body, h1, h2, p, ul {
     margin: 0;
     padding: 0;
@@ -18,11 +18,12 @@ header {
     color: white;
     padding: 10px 20px;
 }
+
 .company-name {
-    font-size: 24px; /* Ajusta el tamaño de la fuente según sea necesario */
-    font-weight: bold; /* Ajusta el peso de la fuente para hacerla más audaz */
+    font-size: 24px; /* Ajustar tamaño de la fuente según sea necesario */
+    font-weight: bold; /* Ajustar peso de la fuente para hacerla más audaz */
     color: #fff; /* Color blanco para el texto */
-    margin-right: 10px; /* Ajusta el margen derecho según sea necesario */
+    margin-right: 10px; /* Ajustar margen derecho según sea necesario */
 }
 
 .logo {
@@ -31,9 +32,9 @@ header {
 }
 
 .logo img {
-    width: 40px; /* Adjust the width as needed */
+    width: 40px; /* Ajustar el ancho según sea necesario */
     height: auto;
-    margin-right: 10px; /* Adjust the spacing as needed */
+    margin-right: 10px; /* Ajustar el espacio según sea necesario */
 }
 
 nav {
@@ -96,7 +97,7 @@ nav ul li a {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    background: rgba(0, 0, 0, 0.5); /* Superposición oscura */
 }
 
 .banner-text {
@@ -107,7 +108,6 @@ nav ul li a {
     color: white;
     text-align: center;
 }
-
 
 main {
     text-align: center;
@@ -122,6 +122,10 @@ main {
 }
 
 .carousel-item {
+    flex: 0 0 calc(100% / 3); /* Ancho de cada elemento del carrusel */
+    min-width: 33.33%; /* Ancho mínimo para cada elemento */
+    white-space: normal; /* Permitir flujo normal de texto */
+    transition: transform 0.5s ease; /* Transición suave para el movimiento */
     border: 2px solid;
     padding: 20px;
     width: 300px;
