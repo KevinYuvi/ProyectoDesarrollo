@@ -4,35 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VolunteerVision</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <header>
-        <div class="logo">VolunteerVision</div>
+        <div class="logo">
+            <img src="static/assets/logo.png" alt="VolunteerVision Logo">
+            <span class="company-name">VolunteerVision</span>
+        </div>
         <nav>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Sobre Nosotros</a></li>
-            </ul>
-            <button class="login-btn">Iniciar Sesión</button>
-            <button class="signup-btn">Crear Cuenta</button>
+            <div class="nav-left">
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#footer">Sobre Nosotros</a></li>
+                </ul>
+            </div>
+            <div class="auth-buttons">
+                <button class="login-btn">Iniciar Sesión</button>
+                <button class="signup-btn">Crear Cuenta</button>
+            </div>
         </nav>
     </header>
 
+    <div class="banner" style="background-image: url('static/assets/banner.jpg');">
+        <div class="banner-text">
+            <h1 class="banner-title">Encuentra oportunidades de voluntariado para ti</h1>
+        </div>
+    </div>
+    
+
     <main>
-        <h1>Encuentra oportunidades de voluntariado para ti</h1>
         <div class="carousel">
             <div class="carousel-item" style="border-color: blue;">
+                <img src="{{ url_for('static', filename='assets/voluntariado_ingles.png') }}" alt="Voluntariado Enseñanza de Inglés">
                 <h2>Voluntariado Enseñanza de Inglés</h2>
                 <p>Ubicación: Zaña, Perú<br>Fecha: 12/07/2024</p>
                 <p>Descripción: Enseña inglés a estudiantes de la región rural de Zaña...</p>
             </div>
             <div class="carousel-item" style="border-color: yellow;">
+                <img src="{{ url_for('static', filename='assets/centro_rescate_amazonas.png') }}" alt="Proyecto Centro de Rescate de Animales del Amazonas">
                 <h2>Proyecto Centro de Rescate de Animales del Amazonas</h2>
                 <p>Ubicación: Puyo, Ecuador<br>Fecha: 18/07/2024</p>
                 <p>Descripción: Ayuda a rescatar y rehabilitar animales de la selva amazónica...</p>
             </div>
             <div class="carousel-item" style="border-color: red;">
+                <img src="{{ url_for('static', filename='assets/ninos_calle.png') }}" alt="Programa Niños de la Calle">
                 <h2>Programa Niños de la Calle</h2>
                 <p>Ubicación: Quito, Ecuador<br>Fecha: 24/07/2024</p>
                 <p>Descripción: Trabaja con niños de la calle y bríndales apoyo educativo...</p>
@@ -40,16 +56,17 @@
         </div>
     </main>
 
-    <footer>
+    <footer id="footer">
         <div class="about">
             <h3>¿Qué es VolunteerVision?</h3>
             <p>VolunteerVision es la aplicación que conecta personas que desean...</p>
         </div>
         <div class="social">
-            <a href="#">Facebook</a>
-            <a href="#">Instagram</a>
-            <a href="#">LinkedIn</a>
+            <a href="#"><img src="static/assets/facebook.png" alt="Facebook"></a>
+            <a href="#"><img src="static/assets/instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="static/assets/x.png" alt="LinkedIn"></a>
         </div>
     </footer>
+    
 </body>
 </html>
