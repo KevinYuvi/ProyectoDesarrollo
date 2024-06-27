@@ -170,3 +170,118 @@ footer .social img {
     width: 24px;
     height: 24px;
 }
+/* Estilos específicos para el login */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.login-form label {
+    margin: 10px 0 5px;
+}
+
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-form .terms-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.login-form button {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+/* Estilos para ingresar */
+body.ingresar {
+    background-color: #f9f9f9;
+}
+body.ingresar header {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+body.ingresar .logo img {
+    height: 50px;
+}
+body.ingresar nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+body.ingresar nav ul li {
+    margin-right: 20px;
+}
+
+body.ingresar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+body.ingresar .header-right .login-btn {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+body.ingresar main {
+    padding: 20px;
+}
+
+body.ingresar h1, body.ingresar h2 {
+    color: #333;
+}
+body.ingresar .proyectos-activos, 
+body.ingresar .recomendaciones, 
+body.ingresar .buscar-voluntariados, 
+body.ingresar .estadisticas {
+    margin-bottom: 20px;
+}
+body.ingresar .proyecto, 
+body.ingresar .proyecto div {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+body.ingresar button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+body.ingresar .completar-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+body.ingresar .eliminar-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+}
+
+body.ingresar .info-btn, body.ingresar .aplicar-btn {
+    background-color: #ffc107;
+    color: black;
+    border: none;
+}
