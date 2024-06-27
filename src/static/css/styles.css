@@ -97,7 +97,6 @@ nav ul li a {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Superposición oscura */
 }
 
 .banner-text {
@@ -107,7 +106,12 @@ nav ul li a {
     transform: translate(-50%, -50%);
     color: white;
     text-align: center;
+    text-shadow: -1px -1px 0 #000,  
+                 1px -1px 0 #000,
+                -1px  1px 0 #000,
+                 1px  1px 0 #000;
 }
+
 
 main {
     text-align: center;
