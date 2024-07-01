@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="VolunteerVision Logo">
+            <span class="company-name">VolunteerVision</span>
+        </div>
+        <nav>
+            <div class="nav-left">
+                <ul>
+                    <li><a href="/src/templates/index.html">Inicio</a></li>
+                    <li><a href="#footer">Sobre Nosotros</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-left">
+
+                <h1>¿Qué te interesa?</h1>
+                <form method="POST" action="/src/templates/index.html">
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember"> Tecnología y eduación digital
+                    </label>
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember"> Jardinería
+                    </label>
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember"> Reciclaje
+                    </label>
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember"> Contribuir a la comunidad
+                    </label>
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember"> Protección del medio ambiente
+                    </label>
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember"> Animales
+                    </label>
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember"> Eduación
+                    </label>
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember"> Salud
+                    </label>
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember"> Deporte y recreación
+                    </label>
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember"> Trabajo con personas mayores
+                    </label>
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember"> Asistencia en desastres
+                    </label>
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember"> Justicia Social
+                    </label>
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember"> Construcción y renovación
+                    </label>
+
+                    <p><a href="#">Mostrar más</a></p>
+
+                    <button type="submit">Continuar</button>
+                </form>
+
+            </div>
+            <div class="form-right">
+                <img src="/src/static/assets/manos.png" alt="Hands around the world">
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+        <div class="about">
+            <h3>¿Qué es VolunteerVision?</h3>
+            <p>VolunteerVision es la aplicación que conecta directamente a personas voluntarias con entidades con
+                proyectos de voluntariado. ¿Quieres unirte?</p>
+        </div>
+        <div class="social">
+            <h4>Redes Sociales</h4>
+            <a href="#"><img src="{{ url_for('static', filename='assets/facebook.png') }}" alt="Facebook"></a>
+            <a href="#"><img src="{{ url_for('static', filename='assets/instagram.png') }}" alt="Instagram"></a>
+            <a href="#"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
+        </div>
+    </footer>
+    <script src="/src/static/js/script.js"></script>
+</body>
+
+</html>

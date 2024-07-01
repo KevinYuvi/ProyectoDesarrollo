@@ -1,11 +1,12 @@
 # app.py
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for, session, request, redirect
 
 app = Flask(__name__)
 
 @app.route('/')
-def home():
+def index():
     return render_template('index.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -17,6 +18,14 @@ def login():
 @app.route('/ingresar')
 def ingresar():
     return render_template('ingresar.html')
+
+@app.route('/register')
+def register():
+    return render_template('register.html')
+
+@app.route('/intereses')
+def intereses():
+    return render_template('intereses.html')
 
 @app.route('/logout')
 def logout():

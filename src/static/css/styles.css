@@ -1,5 +1,9 @@
 /* Reset de algunos estilos por defecto */
-body, h1, h2, p, ul {
+body,
+h1,
+h2,
+p,
+ul {
     margin: 0;
     padding: 0;
 }
@@ -20,10 +24,14 @@ header {
 }
 
 .company-name {
-    font-size: 24px; /* Ajustar tamaño de la fuente según sea necesario */
-    font-weight: bold; /* Ajustar peso de la fuente para hacerla más audaz */
-    color: #fff; /* Color blanco para el texto */
-    margin-right: 10px; /* Ajustar margen derecho según sea necesario */
+    font-size: 24px;
+    /* Ajustar tamaño de la fuente según sea necesario */
+    font-weight: bold;
+    /* Ajustar peso de la fuente para hacerla más audaz */
+    color: #fff;
+    /* Color blanco para el texto */
+    margin-right: 10px;
+    /* Ajustar margen derecho según sea necesario */
 }
 
 .logo {
@@ -32,9 +40,11 @@ header {
 }
 
 .logo img {
-    width: 40px; /* Ajustar el ancho según sea necesario */
+    width: 40px;
+    /* Ajustar el ancho según sea necesario */
     height: auto;
-    margin-right: 10px; /* Ajustar el espacio según sea necesario */
+    margin-right: 10px;
+    /* Ajustar el espacio según sea necesario */
 }
 
 nav {
@@ -69,7 +79,8 @@ nav ul li a {
     gap: 10px;
 }
 
-.login-btn, .signup-btn {
+.login-btn,
+.signup-btn {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
@@ -106,16 +117,73 @@ nav ul li a {
     transform: translate(-50%, -50%);
     color: white;
     text-align: center;
-    text-shadow: -1px -1px 0 #000,  
-                 1px -1px 0 #000,
-                -1px  1px 0 #000,
-                 1px  1px 0 #000;
+    text-shadow: -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
 }
 
+.form-left {
+    padding: 20px;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.form-right {
+    width: 50%;
+    background: url('../img/world_hands.png') no-repeat center center;
+    background-size: cover;
+}
 
 main {
     text-align: center;
     padding: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 10px;
+}
+
+form input {
+    padding: 10px;
+    margin-top: 5px;
+}
+
+form .remember-me {
+    margin-top: 10px;
+}
+
+form button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ffcc00;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #e6b800;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.form-container {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    max-width: 100%;
 }
 
 .carousel {
@@ -126,10 +194,14 @@ main {
 }
 
 .carousel-item {
-    flex: 0 0 calc(100% / 3); /* Ancho de cada elemento del carrusel */
-    min-width: 33.33%; /* Ancho mínimo para cada elemento */
-    white-space: normal; /* Permitir flujo normal de texto */
-    transition: transform 0.5s ease; /* Transición suave para el movimiento */
+    flex: 0 0 calc(100% / 3);
+    /* Ancho de cada elemento del carrusel */
+    min-width: 33.33%;
+    /* Ancho mínimo para cada elemento */
+    white-space: normal;
+    /* Permitir flujo normal de texto */
+    transition: transform 0.5s ease;
+    /* Transición suave para el movimiento */
     border: 2px solid;
     padding: 20px;
     width: 300px;
@@ -170,6 +242,7 @@ footer .social img {
     width: 24px;
     height: 24px;
 }
+
 /* Estilos específicos para el login */
 .login-form {
     display: flex;
@@ -204,10 +277,12 @@ footer .social img {
     border-radius: 4px;
     cursor: pointer;
 }
+
 /* Estilos para ingresar */
 body.ingresar {
     background-color: #f9f9f9;
 }
+
 body.ingresar header {
     background-color: #333;
     color: #fff;
@@ -216,15 +291,18 @@ body.ingresar header {
     align-items: center;
     padding: 10px 20px;
 }
+
 body.ingresar .logo img {
     height: 50px;
 }
+
 body.ingresar nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
+
 body.ingresar nav ul li {
     margin-right: 20px;
 }
@@ -233,6 +311,7 @@ body.ingresar nav ul li a {
     color: #fff;
     text-decoration: none;
 }
+
 body.ingresar .header-right .login-btn {
     background-color: #ff4d4d;
     color: #fff;
@@ -240,20 +319,24 @@ body.ingresar .header-right .login-btn {
     padding: 10px 20px;
     cursor: pointer;
 }
+
 body.ingresar main {
     padding: 20px;
 }
 
-body.ingresar h1, body.ingresar h2 {
+body.ingresar h1,
+body.ingresar h2 {
     color: #333;
 }
-body.ingresar .proyectos-activos, 
-body.ingresar .recomendaciones, 
-body.ingresar .buscar-voluntariados, 
+
+body.ingresar .proyectos-activos,
+body.ingresar .recomendaciones,
+body.ingresar .buscar-voluntariados,
 body.ingresar .estadisticas {
     margin-bottom: 20px;
 }
-body.ingresar .proyecto, 
+
+body.ingresar .proyecto,
 body.ingresar .proyecto div {
     border: 1px solid #ccc;
     padding: 10px;
@@ -280,7 +363,8 @@ body.ingresar .eliminar-btn {
     border: none;
 }
 
-body.ingresar .info-btn, body.ingresar .aplicar-btn {
+body.ingresar .info-btn,
+body.ingresar .aplicar-btn {
     background-color: #ffc107;
     color: black;
     border: none;

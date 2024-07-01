@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ingresar - VolunteerVision</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
+
 <body class="ingresar">
     <header>
         <div class="logo">
@@ -24,41 +26,44 @@
         </nav>
     </header>
     <main>
-        <h1>Bienvenido, Ivan!</h1>
-        <section class="proyectos-activos">
-            <h2>Proyectos Activos</h2>
-            <div class="proyecto">
-                <h3>Ayuda Refugio de animales</h3>
-                <p>Ubicación: Quito, Ecuador</p>
-                <p>Fecha: 16/08/2024</p>
-                <button class="completar-btn">Completar</button>
-                <button class="eliminar-btn">Eliminar</button>
-            </div>
-        </section>
-        <section class="recomendaciones">
-            <h2>Recomendaciones</h2>
-            <div class="proyecto">
-                <h3>Ayuda Refugio de animales</h3>
-                <p>Ubicación: Quito, Ecuador</p>
-                <p>Fecha: 16/08/2024</p>
-                <button class="info-btn">Más información</button>
-                <button class="aplicar-btn">Aplicar</button>
-            </div>
-        </section>
-        <section class="buscar-voluntariados">
-            <h2>Buscar Voluntariados</h2>
-            <input type="text" placeholder="Búsqueda">
-        </section>
-        <aside class="estadisticas">
-            <h2>Tus Estadísticas</h2>
-            <p>Proyectos Completos: 2</p>
-            <p>Proyectos Activos: 1</p>
-        </aside>
+        <div class="container">
+            <h1>Bienvenido, Ivan!</h1>
+            <section class="proyectos-activos">
+                <h2>Proyectos Activos</h2>
+                <div class="proyecto">
+                    <h3>Ayuda Refugio de animales</h3>
+                    <p>Ubicación: Quito, Ecuador</p>
+                    <p>Fecha: 16/08/2024</p>
+                    <button class="completar-btn">Completar</button>
+                    <button class="eliminar-btn">Eliminar</button>
+                </div>
+            </section>
+            <section class="recomendaciones">
+                <h2>Recomendaciones</h2>
+                <div class="proyecto">
+                    <h3>Ayuda Refugio de animales</h3>
+                    <p>Ubicación: Quito, Ecuador</p>
+                    <p>Fecha: 16/08/2024</p>
+                    <button class="info-btn">Más información</button>
+                    <button class="aplicar-btn">Aplicar</button>
+                </div>
+            </section>
+            <section class="buscar-voluntariados">
+                <h2>Buscar Voluntariados</h2>
+                <input type="text" placeholder="Búsqueda">
+            </section>
+            <aside class="estadisticas">
+                <h2>Tus Estadísticas</h2>
+                <p>Proyectos Completos: 2</p>
+                <p>Proyectos Activos: 1</p>
+            </aside>
     </main>
+    </div>
     <footer id="footer">
         <div class="about">
             <h3>¿Qué es VolunteerVision?</h3>
-            <p>VolunteerVision es la aplicación que conecta directamente a personas voluntarias con entidades con proyectos de voluntariado. ¿Quieres unirte?</p>
+            <p>VolunteerVision es la aplicación que conecta directamente a personas voluntarias con entidades con
+                proyectos de voluntariado. ¿Quieres unirte?</p>
         </div>
         <div class="social">
             <h4>Redes Sociales</h4>
@@ -67,6 +72,7 @@
             <a href="#"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
         </div>
     </footer>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="/src/static/js/script.js"></script>
 </body>
+
 </html>
