@@ -1,4 +1,3 @@
-// script.js
 const carousel = document.querySelector('.carousel');
 const carouselItems = document.querySelectorAll('.carousel-item');
 let slideIndex = 0;

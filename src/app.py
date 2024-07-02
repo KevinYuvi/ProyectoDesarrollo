@@ -21,7 +21,7 @@ def ingresar():
 
 @app.route('/register')
 def register():
-    return render_template('register.html')
+    return render_template('registrarse.html')
 
 @app.route('/intereses')
 def intereses():
