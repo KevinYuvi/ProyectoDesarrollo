@@ -17,25 +17,25 @@
         <nav>
             <div class="nav-left">
                 <ul>
-                    <li><a href="/src/templates/index.html">Inicio</a></li>
+                    <li><a href="/templates/index.html">Inicio</a></li>
                     <li><a href="#footer">Sobre Nosotros</a></li>
                 </ul>
             </div>
             <div class="auth-buttons">
-                <button class="login-btn" onclick="window.location.href='/src/templates/login.html'">Iniciar
+                <button class="login-btn" onclick="window.location.href='/templates/login.html'">Iniciar
                     Sesión</button>
-                <button class=" signup-btn" onclick="window.location.href='/src/templates/register.html'">Crear
+                <button class=" signup-btn" onclick="window.location.href='/templates/register.html'">Crear
                     Cuenta</button>
             </div>
         </nav>
     </header>
 
-    <div class="banner" style="background-image: url('{{ url_for('static', filename='assets/banner.png') }}');">
+    <div class="banner" style="background-image: url('static/assets/banner.jpg');">
         <div class="banner-text">
-            <h1>Encuentra oportunidades de voluntariado para ti</h1>
+            <h1>Encuentra oportunidades de voluntariado para ti</h1> 
         </div>
     </div>
-
+    
     <main>
         <div class="carousel">
             <div class="carousel-item" style="border-color: black;">
