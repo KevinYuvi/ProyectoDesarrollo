@@ -17,7 +17,7 @@
         <nav>
             <div class="nav-left">
                 <ul>
-                    <li><a href="/templates/index.html">Inicio</a></li>
+                    <li><a href="{{ url_for('index') }}">Inicio</a></li>
                     <li><a href="#footer">Sobre Nosotros</a></li>
                 </ul>
             </div>
@@ -32,10 +32,10 @@
 
     <div class="banner" style="background-image: url('static/assets/banner.jpg');">
         <div class="banner-text">
-            <h1>Encuentra oportunidades de voluntariado para ti</h1> 
+            <h1>Encuentra oportunidades de voluntariado para ti</h1>
         </div>
     </div>
-    
+
     <main>
         <div class="carousel">
             <div class="carousel-item" style="border-color: black;">
@@ -93,9 +93,11 @@
         </div>
         <div class="social">
             <h4>Redes Sociales</h4>
-            <a href="#"><img src="{{ url_for('static', filename='assets/facebook.png') }}" alt="Facebook"></a>
-            <a href="#"><img src="{{ url_for('static', filename='assets/instagram.png') }}" alt="Instagram"></a>
-            <a href="#"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
+            <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='assets/facebook.png') }}"
+                    alt="Facebook"></a>
+            <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='assets/instagram.png') }}"
+                    alt="Instagram"></a>
+            <a href="https://x.com/home"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
         </div>
     </footer>
 

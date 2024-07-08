@@ -1,6 +1,5 @@
 # app.py
-from flask import Flask, render_template, url_for, session, request, redirect
-
+from flask import Flask, render_template, request, redirect, url_for, session
 app = Flask(__name__)
 
 @app.route('/')
@@ -15,17 +14,26 @@ def login():
         return redirect(url_for('ingresar'))
     return render_template('login.html')
 
-@app.route('/ingresar')
+@app.route('/ingresar', methods=['GET'])
 def ingresar():
     return render_template('ingresar.html')
 
-@app.route('/register')
+@app.route('/register', methods=['GET', 'POST'])
 def register():
-    return render_template('register.html')
+    if request.method == 'POST':
+        print(request.form['firstname'])
+        return render_template('intereses.html')
+    else:
+        return render_template('register.html')
 
-@app.route('/intereses')
+@app.route('/intereses', methods=['GET', 'POST'])
 def intereses():
-    return render_template('intereses.html')
+    #Solo ingresa al if si en la pagina mandamos algo
+    if request.method == 'POST':
+        return render_template('ingresar.html')
+    else:
+        #De lo contrario carga la plantilla de intereses
+        return render_template('intereses.html')
 
 @app.route('/logout')
 def logout():
