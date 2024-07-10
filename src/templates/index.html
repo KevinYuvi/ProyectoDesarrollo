@@ -10,7 +10,21 @@
 
 <body>
     <header>
-        <div class="logo">VolunteerVision</div>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='assets/logo2.png') }}" alt="VolunteerVision Logo">
+            <span class="company-name">VolunteerVision</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="#">Oportunidades</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Iniciar Sesión</a></li>
+                <li><a href="#">Registro</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <section class="hero">
         <h1>Encuentra Oportunidades de Voluntariado para Ti</h1>
@@ -80,7 +94,7 @@
         <a href="https://x.com/home"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
         </div>
         <div class="contact">
-            <p>Contacto: contacto@volunteervision.com</p>
+            <p>&copy; 2024 VolunteerVision. Todos los derechos reservados.</p>
         </div>
     </footer>
     <script src="/static/js/script_index.js"></script>
