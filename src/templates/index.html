@@ -45,31 +45,13 @@
                     <img src="{{ url_for('static', filename='assets/centro_rescate_amazonas.png') }}" alt="Proyecto Centro de Rescate de Animales del Amazonas">
                     <h2>Proyecto Centro de Rescate de Animales del Amazonas</h2>
                     <p>Ubicación: Puyo, Ecuador<br>Fecha: 18/07/2024</p>
-                    <p>Descripción: Ayuda a rescatar y rehabilitar animales de la selva amazónica...</p>
+                    <p>Ayuda a rescatar y rehabilitar animales de la selva amazónica...</p>
                 </div>
                 <div class="carousel-item" style="border-color: black;">
                     <img src="{{ url_for('static', filename='assets/ninos_calle.png') }}" alt="Programa Niños de la Calle">
                     <h2>Programa Niños de la Calle</h2>
                     <p>Ubicación: Quito, Ecuador<br>Fecha: 24/07/2024</p>
-                    <p>Descripción: Trabaja con niños de la calle y bríndales apoyo educativo...</p>
-                </div>
-                <div class="carousel-item" style="border-color: black;">
-                    <img src="{{ url_for('static', filename='assets/voluntariado_ingles.png') }}" alt="Voluntariado Enseñanza de Inglés">
-                    <h2>Voluntariado Enseñanza de Inglés</h2>
-                    <p>Ubicación: Zaña, Perú<br>Fecha: 12/07/2024</p>
-                    <p>Descripción: Si te unes al Programa de enseñanza de inglés, entonces tu función principal será enseñar inglés a estudiantes peruanos locales.</p>
-                </div>
-                <div class="carousel-item" style="border-color: black;">
-                    <img src="{{ url_for('static', filename='assets/centro_rescate_amazonas.png') }}" alt="Proyecto Centro de Rescate de Animales del Amazonas">
-                    <h2>Proyecto Centro de Rescate de Animales del Amazonas</h2>
-                    <p>Ubicación: Puyo, Ecuador<br>Fecha: 18/07/2024</p>
-                    <p>Descripción: Ayuda a rescatar y rehabilitar animales de la selva amazónica...</p>
-                </div>
-                <div class="carousel-item" style="border-color: black;">
-                    <img src="{{ url_for('static', filename='assets/ninos_calle.png') }}" alt="Programa Niños de la Calle">
-                    <h2>Programa Niños de la Calle</h2>
-                    <p>Ubicación: Quito, Ecuador<br>Fecha: 24/07/2024</p>
-                    <p>Descripción: Trabaja con niños de la calle y bríndales apoyo educativo...</p>
+                    <p>Trabaja con niños de la calle y bríndales apoyo educativo...</p>
                 </div>
             </div>
             <button class="carousel-control prev" onclick="moveSlide(-1)">❮</button>
@@ -83,7 +65,44 @@
         <img src="sobre-nosotros.jpg" alt="Sobre Nosotros">
     </section>
 
-
+    <section id="beneficios">
+        <div class="container">
+            <h2>¿Por qué Voluntariado con VolunteerVision?</h2>
+            <div class="beneficio">
+                <h3>Personalización</h3>
+                <p>Recibe recomendaciones de oportunidades basadas en tus intereses y habilidades gracias a nuestra tecnología de inteligencia artificial.</p>
+            </div>
+    
+            <div id="MasBeneficios" style="display: none;">
+                <div class="beneficio">
+                    <h3>Impacto Social</h3>
+                    <p>Contribuye a causas significativas y genera un impacto positivo en comunidades locales e internacionales.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>Experiencia Enriquecedora</h3>
+                    <p>Desarrolla nuevas habilidades, establece conexiones significativas y vive nuevas culturas mientras te involucras en el voluntariado.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>Facilidad de Uso</h3>
+                    <p>Navega y encuentra oportunidades de voluntariado con facilidad gracias a nuestra plataforma intuitiva y fácil de usar.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>Seguridad y Confianza</h3>
+                    <p>Selecciona oportunidades verificadas y organizaciones de renombre con total seguridad y confianza.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>Comunidad de Voluntarios</h3>
+                    <p>Conéctate y colabora con otros voluntarios que comparten tus intereses y valores, creando una comunidad fuerte y solidaria.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>Feedback y Mejora Continua</h3>
+                    <p>Tu opinión es valiosa. Ayúdanos a mejorar nuestra plataforma y experiencia de voluntariado con tus comentarios y sugerencias.</p>
+                </div>
+            </div>
+    
+            <button id="showMoreBtn" onclick="toggleAdditionalBenefits()">Ver más beneficios</button>
+        </div>
+    </section>
 
     <footer>
         <div class="social-media">
