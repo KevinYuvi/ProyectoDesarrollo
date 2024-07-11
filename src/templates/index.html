@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VolunteerVision"</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_index.css')}}">
 </head>
 
 <body>
@@ -15,6 +15,7 @@
             <span class="company-name">VolunteerVision</span>
         </div>
         <nav>
+<<<<<<< HEAD
             <div class="nav-left">
                 <ul>
                     <li><a href="#header">Inicio</a></li>
@@ -27,78 +28,114 @@
                 <button class="signup-btn" onclick="window.location.href='/register'">Crear
                     Cuenta</button>
             </div>
+=======
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="#">Oportunidades</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Iniciar Sesión</a></li>
+                <li><a href="#">Registro</a></li>
+            </ul>
+>>>>>>> master
         </nav>
     </header>
 
-    <div class="banner" style="background-image: url('static/assets/banner.jpg');">
-        <div class="banner-text">
-            <h1>Encuentra oportunidades de voluntariado para ti</h1> 
-        </div>
-    </div>
-    
-    <main>
+    <section class="hero">
+        <h1>Encuentra Oportunidades de Voluntariado para Ti</h1>
+        <p>Descubre cómo puedes hacer la diferencia en tu comunidad.</p>
+        <a href="#" class="cta">Explora Oportunidades</a>
+    </section>
+
+    <section class="carousel-section" id="home">
         <div class="carousel">
-            <div class="carousel-item" style="border-color: black;">
-                <img src="{{ url_for('static', filename='assets/voluntariado_ingles.png') }}"
-                    alt="Voluntariado Enseñanza de Inglés">
-                <h2>Voluntariado Enseñanza de Inglés</h2>
-                <p>Ubicación: Zaña, Perú<br>Fecha: 12/07/2024</p>
-                <p>Descripción: Si te unes al Programa de enseñanza de inglés, entonces tu función principal será
-                    enseñar inglés a estudiantes peruanos locales.</p>
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="border-color: black;">
+                    <img src="{{ url_for('static', filename='assets/voluntariado_ingles.png') }}" alt="Voluntariado Enseñanza de Inglés">
+                    <h2>Enseñanza de Inglés</h2>
+                    <p>Ubicación: Zaña, Perú<br>Fecha: 12/07/2024</p>
+                    <p>Si te unes al Programa de enseñanza de inglés, entonces tu función principal será enseñar inglés a estudiantes peruanos locales.</p>
+                </div>
+                <div class="carousel-item" style="border-color: black;">
+                    <img src="{{ url_for('static', filename='assets/centro_rescate_amazonas.png') }}" alt="Proyecto Centro de Rescate de Animales del Amazonas">
+                    <h2>Proyecto Centro de Rescate de Animales del Amazonas</h2>
+                    <p>Ubicación: Puyo, Ecuador<br>Fecha: 18/07/2024</p>
+                    <p>Ayuda a rescatar y rehabilitar animales de la selva amazónica...</p>
+                </div>
+                <div class="carousel-item" style="border-color: black;">
+                    <img src="{{ url_for('static', filename='assets/ninos_calle.png') }}" alt="Programa Niños de la Calle">
+                    <h2>Programa Niños de la Calle</h2>
+                    <p>Ubicación: Quito, Ecuador<br>Fecha: 24/07/2024</p>
+                    <p>Trabaja con niños de la calle y bríndales apoyo educativo...</p>
+                </div>
             </div>
-            <div class="carousel-item" style="border-color: black;">
-                <img src="{{ url_for('static', filename='assets/centro_rescate_amazonas.png') }}"
-                    alt="Proyecto Centro de Rescate de Animales del Amazonas">
-                <h2>Proyecto Centro de Rescate de Animales del Amazonas</h2>
-                <p>Ubicación: Puyo, Ecuador<br>Fecha: 18/07/2024</p>
-                <p>Descripción: Ayuda a rescatar y rehabilitar animales de la selva amazónica...</p>
-            </div>
-            <div class="carousel-item" style="border-color: black;">
-                <img src="{{ url_for('static', filename='assets/ninos_calle.png') }}" alt="Programa Niños de la Calle">
-                <h2>Programa Niños de la Calle</h2>
-                <p>Ubicación: Quito, Ecuador<br>Fecha: 24/07/2024</p>
-                <p>Descripción: Trabaja con niños de la calle y bríndales apoyo educativo...</p>
-            </div>
-
-
-            <div class="carousel-item" style="border-color: black;">
-                <img src="{{ url_for('static', filename='assets/voluntariado_ingles.png') }}"
-                    alt="Voluntariado Enseñanza de Inglés">
-                <h2>Voluntariado Enseñanza de Inglés</h2>
-                <p>Ubicación: Zaña, Perú<br>Fecha: 12/07/2024</p>
-                <p>Descripción: Si te unes al Programa de enseñanza de inglés, entonces tu función principal será
-                    enseñar inglés a estudiantes peruanos locales.</p>
-            </div>
-            <div class="carousel-item" style="border-color: black;">
-                <img src="{{ url_for('static', filename='assets/centro_rescate_amazonas.png') }}"
-                    alt="Proyecto Centro de Rescate de Animales del Amazonas">
-                <h2>Proyecto Centro de Rescate de Animales del Amazonas</h2>
-                <p>Ubicación: Puyo, Ecuador<br>Fecha: 18/07/2024</p>
-                <p>Descripción: Ayuda a rescatar y rehabilitar animales de la selva amazónica...</p>
-            </div>
-            <div class="carousel-item" style="border-color: black;">
-                <img src="{{ url_for('static', filename='assets/ninos_calle.png') }}" alt="Programa Niños de la Calle">
-                <h2>Programa Niños de la Calle</h2>
-                <p>Ubicación: Quito, Ecuador<br>Fecha: 24/07/2024</p>
-                <p>Descripción: Trabaja con niños de la calle y bríndales apoyo educativo...</p>
-            </div>
+            <button class="carousel-control prev" onclick="moveSlide(-1)">❮</button>
+            <button class="carousel-control next" onclick="moveSlide(1)">❯</button>
         </div>
-    </main>
+    </section>
 
-    <footer id="footer">
-        <div class="about">
-            <h3>¿Qué es VolunteerVision?</h3>
-            <p>VolunteerVision es la aplicación que conecta directamente a personas voluntarias con entidades con
-                proyectos de voluntariado. ¿Quieres unirte?</p>
+    <section class="about-us">
+        <h2>Sobre Nosotros</h2>
+        <p>Nuestra misión es conectar voluntarios con oportunidades significativas.</p>
+        <img src="sobre-nosotros.jpg" alt="Sobre Nosotros">
+    </section>
+
+    <section id="beneficios">
+        <div class="container">
+            <h2>¿Por qué Voluntariado con VolunteerVision?</h2>
+            <div class="beneficio">
+                <h3>Personalización</h3>
+                <p>Recibe recomendaciones de oportunidades basadas en tus intereses y habilidades gracias a nuestra tecnología de inteligencia artificial.</p>
+            </div>
+    
+            <div id="MasBeneficios" style="display: none;">
+                <div class="beneficio">
+                    <h3>Impacto Social</h3>
+                    <p>Contribuye a causas significativas y genera un impacto positivo en comunidades locales e internacionales.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>Experiencia Enriquecedora</h3>
+                    <p>Desarrolla nuevas habilidades, establece conexiones significativas y vive nuevas culturas mientras te involucras en el voluntariado.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>Facilidad de Uso</h3>
+                    <p>Navega y encuentra oportunidades de voluntariado con facilidad gracias a nuestra plataforma intuitiva y fácil de usar.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>Seguridad y Confianza</h3>
+                    <p>Selecciona oportunidades verificadas y organizaciones de renombre con total seguridad y confianza.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>Comunidad de Voluntarios</h3>
+                    <p>Conéctate y colabora con otros voluntarios que comparten tus intereses y valores, creando una comunidad fuerte y solidaria.</p>
+                </div>
+                <div class="beneficio">
+                    <h3>Feedback y Mejora Continua</h3>
+                    <p>Tu opinión es valiosa. Ayúdanos a mejorar nuestra plataforma y experiencia de voluntariado con tus comentarios y sugerencias.</p>
+                </div>
+            </div>
+    
+            <button id="showMoreBtn" onclick="toggleAdditionalBenefits()">Ver más beneficios</button>
         </div>
-        <div class="social">
-            <h4>Redes Sociales</h4>
-            <a href="#"><img src="{{ url_for('static', filename='assets/facebook.png') }}" alt="Facebook"></a>
-            <a href="#"><img src="{{ url_for('static', filename='assets/instagram.png') }}" alt="Instagram"></a>
-            <a href="#"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
+    </section>
+
+    <footer>
+        <div class="social-media">
+            <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='assets/facebook.png') }}"
+                alt="Facebook"></a>
+        <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='assets/instagram.png') }}"
+                alt="Instagram"></a>
+        <a href="https://x.com/home"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
+        </div>
+        <div class="contact">
+            <p>&copy; 2024 VolunteerVision. Todos los derechos reservados.</p>
         </div>
     </footer>
+<<<<<<< HEAD
     <script src="/static/js/script.js"></script>
+=======
+    <script src="/static/js/script_index.js"></script>
+>>>>>>> master
 </body>
 
 </html>
