@@ -36,9 +36,9 @@
         <div class="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" style="border-color: black;">
-                    <img src="{{ url_for('static', filename='assets/ingles.jpg') }}" alt="Voluntariado Enseñanza de Inglés">
+                    <img src="{{ url_for('static', filename='assets/escuela.jpg') }}" alt="Voluntariado Enseñanza de Inglés">
                     <h2>Enseñanza de Inglés</h2>
-                    <p>Ubicación: Zaña, Perú<br>Fecha: 12/07/2024</p>
+                    <p>Ubicación: Imbabura, Ecuador<br>Fecha: 12/07/2024</p>
                     <p>Si te unes al Programa de enseñanza de inglés, entonces tu función principal será enseñar inglés a estudiantes peruanos locales.</p>
                 </div>
                 <div class="carousel-item" style="border-color: black;">
@@ -48,10 +48,10 @@
                     <p>Ayuda a rescatar y rehabilitar animales de la selva amazónica...</p>
                 </div>
                 <div class="carousel-item" style="border-color: black;">
-                    <img src="{{ url_for('static', filename='assets/calle.jpg') }}" alt="Programa Niños de la Calle">
-                    <h2>Programa Niños de la Calle</h2>
+                    <img src="{{ url_for('static', filename='assets/reciclar.jpg') }}" alt="Reciclar">
+                    <h2>Programas de reciclaje</h2>
                     <p>Ubicación: Quito, Ecuador<br>Fecha: 24/07/2024</p>
-                    <p>Trabaja con niños de la calle y bríndales apoyo educativo...</p>
+                    <p>Un programa de reciclaje bien implementado no solo ayuda a proteger el planeta, sino que también aporta beneficios significativos para tu comunidad</p>
                 </div>
             </div>
             <button class="carousel-control prev" onclick="moveSlide(-1)">❮</button>
@@ -64,7 +64,7 @@
         <p>VolunteerVision es la aplicación que conecta directamente a personas 
             <br> voluntarias con entidades con proyectos de voluntariado.
             <br> ¿Quieres unirte?</p>
-        <img src="sobre-nosotros.jpg" alt="Sobre Nosotros">
+        <img src="{{ url_for('static', filename='assets/about.jpg') }}" alt="Sobre Nosotros" class="about-img">
     </section>
 
     <section id="beneficios">

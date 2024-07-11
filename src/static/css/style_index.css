@@ -158,6 +158,13 @@ section h2 {
     right: 10px;
 }
 
+.about-img {
+    width: 500px;
+    height: auto;
+    border-radius: 3%;
+}
+
+
 footer {
     background: #2c3e50;
     color: white;
