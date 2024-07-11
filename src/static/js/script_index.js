@@ -20,5 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentSlide);
     setInterval(() => moveSlide(1), 3000); // Cambia de diapositiva cada 3 segundos
 });
+
+//Beneficios 
+function toggleAdditionalBenefits() {
+    var additionalBenefits = document.getElementById('additionalBenefits');
+    var showMoreBtn = document.getElementById('showMoreBtn');
+
+    if (additionalBenefits.style.display === 'none') {
+        additionalBenefits.style.display = 'block';
+        showMoreBtn.textContent = 'Ver menos beneficios';
+    } else {
+        additionalBenefits.style.display = 'none';
+        showMoreBtn.textContent = 'Ver más beneficios';
+    }
+}
  
 

@@ -17,11 +17,11 @@
         <nav>
             <ul>
                 <li><a href="#">Inicio</a></li>
-                <li><a href="#">Sobre Nosotros</a></li>
-                <li><a href="#">Oportunidades</a></li>
-                <li><a href="#">Contacto</a></li>
-                <li><a href="#">Iniciar Sesión</a></li>
-                <li><a href="#">Registro</a></li>
+                <li><a href="#about">Sobre Nosotros</a></li>
+                <li><a href="#home">Oportunidades</a></li>
+                <li><a href="#footer">Contacto</a></li>
+                <li><a href="/login">Iniciar Sesión</a></li>
+                <li><a href="/register">Registrarse</a></li>
             </ul>
         </nav>
     </header>
@@ -59,9 +59,11 @@
         </div>
     </section>
 
-    <section class="about-us">
+    <section class="about-us" id="about">
         <h2>Sobre Nosotros</h2>
-        <p>Nuestra misión es conectar voluntarios con oportunidades significativas.</p>
+        <p>VolunteerVision es la aplicación que conecta directamente a personas 
+            <br> voluntarias con entidades con proyectos de voluntariado.
+            <br> ¿Quieres unirte?</p>
         <img src="sobre-nosotros.jpg" alt="Sobre Nosotros">
     </section>
 
@@ -100,11 +102,11 @@
                 </div>
             </div>
     
-            <button id="showMoreBtn" onclick="toggleAdditionalBenefits()">Ver más beneficios</button>
+            <button id="MostrarMasBtn" onclick="toggleAdditionalBenefits()">Ver más beneficios</button>
         </div>
     </section>
 
-    <footer>
+    <footer id="footer">
         <div class="social-media">
             <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='assets/facebook.png') }}"
                 alt="Facebook"></a>
