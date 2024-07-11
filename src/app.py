@@ -19,15 +19,11 @@ def ingresar():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-<<<<<<< HEAD
-    return render_template('registrarse.html')
-=======
     if request.method == 'POST':
         print(request.form['firstname'])
         return render_template('intereses.html')
     else:
         return render_template('register.html')
->>>>>>> master
 
 @app.route('/intereses', methods=['GET', 'POST'])
 def intereses():
