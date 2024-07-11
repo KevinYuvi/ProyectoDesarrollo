@@ -36,19 +36,19 @@
         <div class="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" style="border-color: black;">
-                    <img src="{{ url_for('static', filename='assets/voluntariado_ingles.png') }}" alt="Voluntariado Enseñanza de Inglés">
+                    <img src="{{ url_for('static', filename='assets/ingles.jpg') }}" alt="Voluntariado Enseñanza de Inglés">
                     <h2>Enseñanza de Inglés</h2>
                     <p>Ubicación: Zaña, Perú<br>Fecha: 12/07/2024</p>
                     <p>Si te unes al Programa de enseñanza de inglés, entonces tu función principal será enseñar inglés a estudiantes peruanos locales.</p>
                 </div>
                 <div class="carousel-item" style="border-color: black;">
-                    <img src="{{ url_for('static', filename='assets/centro_rescate_amazonas.png') }}" alt="Proyecto Centro de Rescate de Animales del Amazonas">
+                    <img src="{{ url_for('static', filename='assets/animales.jpg') }}" alt="Proyecto Centro de Rescate de Animales del Amazonas">
                     <h2>Proyecto Centro de Rescate de Animales del Amazonas</h2>
                     <p>Ubicación: Puyo, Ecuador<br>Fecha: 18/07/2024</p>
                     <p>Ayuda a rescatar y rehabilitar animales de la selva amazónica...</p>
                 </div>
                 <div class="carousel-item" style="border-color: black;">
-                    <img src="{{ url_for('static', filename='assets/ninos_calle.png') }}" alt="Programa Niños de la Calle">
+                    <img src="{{ url_for('static', filename='assets/calle.jpg') }}" alt="Programa Niños de la Calle">
                     <h2>Programa Niños de la Calle</h2>
                     <p>Ubicación: Quito, Ecuador<br>Fecha: 24/07/2024</p>
                     <p>Trabaja con niños de la calle y bríndales apoyo educativo...</p>
@@ -74,12 +74,12 @@
                 <h3>Personalización</h3>
                 <p>Recibe recomendaciones de oportunidades basadas en tus intereses y habilidades gracias a nuestra tecnología de inteligencia artificial.</p>
             </div>
+            <div class="beneficio">
+                <h3>Impacto Social</h3>
+                <p>Contribuye a causas significativas y genera un impacto positivo en comunidades locales e internacionales.</p>
+            </div>
     
-            <div id="MasBeneficios" style="display: none;">
-                <div class="beneficio">
-                    <h3>Impacto Social</h3>
-                    <p>Contribuye a causas significativas y genera un impacto positivo en comunidades locales e internacionales.</p>
-                </div>
+            <div id="despliegue" style="display: none;">
                 <div class="beneficio">
                     <h3>Experiencia Enriquecedora</h3>
                     <p>Desarrolla nuevas habilidades, establece conexiones significativas y vive nuevas culturas mientras te involucras en el voluntariado.</p>
@@ -102,8 +102,13 @@
                 </div>
             </div>
     
-            <button id="MostrarMasBtn" onclick="toggleAdditionalBenefits()">Ver más beneficios</button>
+            <button id="MostraMasBtn" onclick="despliegue_beneficios()">Ver más beneficios</button>
         </div>
+    </section>
+
+    <section class="final-cta">
+        <h2>Únete Ahora y Comienza a Hacer la Diferencia</h2>
+        <a href="#" class="cta">Únete Ahora</a>
     </section>
 
     <footer id="footer">

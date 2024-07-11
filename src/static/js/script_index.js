@@ -18,21 +18,20 @@ function moveSlide(n) {
 
 document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentSlide);
-    setInterval(() => moveSlide(1), 3000); // Cambia de diapositiva cada 3 segundos
+    setInterval(() => moveSlide(1), 5000); // Cambia de diapositiva cada 3 segundos
 });
 
 //Beneficios 
-function toggleAdditionalBenefits() {
-    var additionalBenefits = document.getElementById('additionalBenefits');
-    var showMoreBtn = document.getElementById('showMoreBtn');
+function despliegue_beneficios() {
+    var despliegue = document.getElementById('despliegue');
+    var MostraMasBtn = document.getElementById('MostraMasBtn');
 
-    if (additionalBenefits.style.display === 'none') {
-        additionalBenefits.style.display = 'block';
-        showMoreBtn.textContent = 'Ver menos beneficios';
+    if (despliegue.style.display === 'none') {
+        despliegue.style.display = 'block';
+        MostraMasBtn.textContent = 'Ver menos beneficios';
     } else {
-        additionalBenefits.style.display = 'none';
-        showMoreBtn.textContent = 'Ver más beneficios';
+        despliegue.style.display = 'none';
+        MostraMasBtn.textContent = 'Ver más beneficios';
     }
 }
- 
 

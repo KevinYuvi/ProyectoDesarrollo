@@ -123,7 +123,7 @@ section h2 {
 }
 
 .carousel-item img {
-    width: 100%;
+    width: 70%;
     height: auto;
     border-radius: 10px;
 }
@@ -239,7 +239,7 @@ footer .contact form button:hover {
     margin-bottom: 20px;
 }
 
-#beneficios .benefit {
+#beneficios .beneficio {
     background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -248,18 +248,18 @@ footer .contact form button:hover {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#beneficios .benefit h3 {
+#beneficios .beneficio h3 {
     font-size: 1.8rem;
     margin-bottom: 10px;
     color: #007bff;
 }
 
-#beneficios .benefit p {
+#beneficios .beneficio p {
     font-size: 1rem;
     color: #555;
 }
 
-#MostrarMasBtn {
+#MostraMasBtn {
     background-color: #007bff;
     color: white;
     border: none;
@@ -269,6 +269,6 @@ footer .contact form button:hover {
     margin-top: 20px;
 }
 
-#MostrarMasBtn:hover {
+#MostraMasBtn:hover {
     background-color: #0056b3;
 }
