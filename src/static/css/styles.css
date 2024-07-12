@@ -15,23 +15,39 @@ body {
 }
 
 header {
+    background: #2c3e50;
+    color: white;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
 }
 
-.company-name {
-    font-size: 24px;
-    /* Ajustar tamaño de la fuente según sea necesario */
+header .logo {
+    font-size: 1.5rem;
     font-weight: bold;
-    /* Ajustar peso de la fuente para hacerla más audaz */
-    color: #fff;
-    /* Color blanco para el texto */
-    margin-right: 10px;
-    /* Ajustar margen derecho según sea necesario */
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+header nav ul li {
+    margin: 0;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+header nav ul li a:hover {
+    background: #34495e;
 }
 
 .logo {
@@ -41,37 +57,8 @@ header {
 
 .logo img {
     width: 150px;
-    /* Ajustar el ancho según sea necesario */
     height: auto;
     margin-right: 10px;
-    /* Ajustar el espacio según sea necesario */
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.nav-left {
-    display: flex;
-    align-items: center;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-nav ul li {
-    display: inline;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
 }
 
 .auth-buttons {
@@ -216,31 +203,68 @@ form button:hover {
 }
 
 footer {
-    background-color: #333;
+    background: #2c3e50;
     color: white;
+    padding: 2rem;
+    text-align: center;
+}
+
+
+footer nav ul {
+    list-style: none;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+    justify-content: center;
+    gap: 1rem;
 }
 
-footer .about {
-    text-align: left;
+footer nav ul li {
+    margin: 0;
 }
 
-footer .social {
-    text-align: right;
-}
-
-footer .social a {
+footer nav ul li a {
     color: white;
-    margin: 0 10px;
     text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
 }
 
-footer .social img {
-    width: 24px;
-    height: 24px;
+footer nav ul li a:hover {
+    background: #34495e;
+}
+
+footer .social-media a img {
+    width: 30px;
+    margin: 0 0.5rem;
+}
+
+footer .contact p {
+    margin: 1rem 0;
+}
+
+footer .contact form {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+footer .contact form input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+footer .contact form button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: #e74c3c;
+    color: white;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+footer .contact form button:hover {
+    background: #c0392b;
 }
 
 /* Estilos específicos para el login */
