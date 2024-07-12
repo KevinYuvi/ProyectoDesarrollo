@@ -42,12 +42,21 @@ def ingresar():
 
 @app.route('/registro', methods=['GET', 'POST'])
 def registro():
-    if request.method == 'POST':
-     
-        
-        return render_template('intereses.html')
-    else:
         return render_template('registro.html')
+    
+@app.route('/crear-registro', methods = ['GET', 'POST'])
+def crear_registro():
+    firstname = request.form['firstname']
+    lastname = request.form['lastname']
+    phone = request.form['phone']
+    country = request.form['country']
+    email = request.form['email']
+    password = request.form['password']
+    
+    cur = mysql.connection.cursor()
+    cur.execute("INSERT INTO usuarios (firstname, lastname, phone, country, email, password) VALES (%s, %s, %s, %s, %s, %s)", (firstname, lastname, phone, country, email, password))
+    mysql.connection.commit()   
+    return render_template('intereses.html')
 
 @app.route('/intereses', methods=['GET', 'POST'])
 def intereses():
