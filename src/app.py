@@ -18,6 +18,10 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    return render_template('login.html')
+    
+@app.route('/acceso_login', methods=['GET', 'POST'])
+def acceso_login():
     if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
         _correo = request.form['email']
         _password = request.form['password']
@@ -32,9 +36,7 @@ def login():
             return render_template("ingresar.html")
         else:
             return render_template('login.html')
-        
-    else:
-        return render_template('login.html')
+
 
 @app.route('/ingresar', methods=['GET'])
 def ingresar():
