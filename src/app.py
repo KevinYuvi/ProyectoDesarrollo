@@ -3,6 +3,8 @@ from flask_mysqldb import MySQL, MySQLdb
 
 app = Flask(__name__, template_folder='templates')
 
+app.secret_key = 'your_secret_key'
+
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = ''
@@ -41,16 +43,7 @@ def ingresar():
 @app.route('/registro', methods=['GET', 'POST'])
 def registro():
     if request.method == 'POST':
-        firstname = request.form['firstname']
-        lastname = request.form['lastname']
-        phone = request.form['phone']
-        country = request.form['country']
-        email = request.form['email']
-        password = request.form['password']
-        
-        cur = mysql.connection.cursor()
-        cur.execute(" INSERT INTO usuarios (firstname, lastname, phone, country, email, password) VALUES (%s, %s, %s, %s, %s, %s)", (firstname, lastname, phone, country, email, password))
-        mysql.connection.commit()
+     
         
         return render_template('intereses.html')
     else:
