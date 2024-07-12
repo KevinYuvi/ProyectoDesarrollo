@@ -1,9 +1,14 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, Response
+from flask_mysqldb import MySQL, MySQLdb
 
+app = Flask(__name__, template_folder='templates')
 
-app = Flask(__name__)
-
-app.secret_key = 'your_secret_key'  # Necesario para manejar sesiones
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'prueba1' #Base de datos
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+mysql = MySQL(app)
 
 @app.route('/')
 def index():
@@ -11,23 +16,45 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        # Omitir la lógica de autenticación
-        session['user'] = request.form['email']  # Añadir el usuario a la sesión
-        return redirect(url_for('ingresar'))
-    return render_template('login.html')
+    if request.method == 'POST' and 'email' in request.form and 'password' in request.form:
+        _correo = request.form['email']
+        _password = request.form['password']
+                
+        cur=mysql.connection.cursor()
+        cur.execute('SELECT * FROM usuarios WHERE email = %s AND password = %s', (_correo, _password,))
+        account = cur.fetchone()
+        
+        if account:
+            session['logueado'] = True
+            session['id'] = account['id']
+            return render_template("ingresar.html")
+        else:
+            return render_template('login.html')
+        
+    else:
+        return render_template('login.html')
 
 @app.route('/ingresar', methods=['GET'])
 def ingresar():
     return render_template('ingresar.html')
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
+@app.route('/registro', methods=['GET', 'POST'])
+def registro():
     if request.method == 'POST':
-        print(request.form['firstname'])
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
+        phone = request.form['phone']
+        country = request.form['country']
+        email = request.form['email']
+        password = request.form['password']
+        
+        cur = mysql.connection.cursor()
+        cur.execute(" INSERT INTO usuarios (firstname, lastname, phone, country, email, password) VALUES (%s, %s, %s, %s, %s, %s)", (firstname, lastname, phone, country, email, password))
+        mysql.connection.commit()
+        
         return render_template('intereses.html')
     else:
-        return render_template('register.html')
+        return render_template('registro.html')
 
 @app.route('/intereses', methods=['GET', 'POST'])
 def intereses():
@@ -42,5 +69,8 @@ def intereses():
 def logout():
     session.pop('user', None)  # Cierra sesión de usuario de la sesión
     return redirect(url_for('home'))
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.secret_key = 'your_secret_key'
+    app.run(host='localhost', debug=True, port=2024)
+    
