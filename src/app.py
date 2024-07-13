@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, Response
 from flask_mysqldb import MySQL, MySQLdb
+from pymongo import MongoClient
+from bson.objectid import ObjectId
 
 app = Flask(__name__, template_folder='templates')
 
@@ -11,6 +13,10 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'prueba1' #Base de datos
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql = MySQL(app)
+
+client = MongoClient("mongodb://localhost:27017/")
+db = client["voluntariado"]
+users_collection = db["usuarios"]
 
 @app.route('/')
 def index():
@@ -62,12 +68,18 @@ def crear_registro():
 
 @app.route('/intereses', methods=['GET', 'POST'])
 def intereses():
-    #Solo ingresa al if si en la pagina mandamos algo
     if request.method == 'POST':
-        return render_template('ingresar.html')
-    else:
-        #De lo contrario carga la plantilla de intereses
-        return render_template('intereses.html')
+        user_id = session.get('user_id')  # Asegúrate de que el ID del usuario esté almacenado en la sesión
+        interests = request.form.getlist('interests')  # Obtener la lista de intereses seleccionados
+        
+        if user_id:
+            # Actualizar la base de datos con los intereses del usuario
+            users_collection.update_one({'_id': ObjectId(user_id)}, {'$set': {'interests': interests}})
+            return redirect(url_for('index'))
+        else:
+            return redirect(url_for('login'))  # Redirigir al inicio de sesión si el ID de usuario no está disponible
+
+    return render_template('intereses.html')
 
 @app.route('/logout')
 def logout():
