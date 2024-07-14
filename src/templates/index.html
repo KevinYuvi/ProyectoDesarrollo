@@ -36,13 +36,16 @@
         <div class="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active" style="border-color: black;">
-                    <img src="{{ url_for('static', filename='assets/escuela.jpg') }}" alt="Voluntariado Enseñanza de Inglés">
+                    <img src="{{ url_for('static', filename='assets/escuela.jpg') }}"
+                        alt="Voluntariado Enseñanza de Inglés">
                     <h2>Enseñanza de Inglés</h2>
                     <p>Ubicación: Imbabura, Ecuador<br>Fecha: 12/07/2024</p>
-                    <p>Si te unes al Programa de enseñanza de inglés, entonces tu función principal será enseñar inglés a estudiantes peruanos locales.</p>
+                    <p>Si te unes al Programa de enseñanza de inglés, entonces tu función principal será enseñar inglés
+                        a estudiantes peruanos locales.</p>
                 </div>
                 <div class="carousel-item" style="border-color: black;">
-                    <img src="{{ url_for('static', filename='assets/animales.jpg') }}" alt="Proyecto Centro de Rescate de Animales del Amazonas">
+                    <img src="{{ url_for('static', filename='assets/animales.jpg') }}"
+                        alt="Proyecto Centro de Rescate de Animales del Amazonas">
                     <h2>Proyecto Centro de Rescate de Animales del Amazonas</h2>
                     <p>Ubicación: Puyo, Ecuador<br>Fecha: 18/07/2024</p>
                     <p>Ayuda a rescatar y rehabilitar animales de la selva amazónica...</p>
@@ -51,7 +54,8 @@
                     <img src="{{ url_for('static', filename='assets/reciclar.jpg') }}" alt="Reciclar">
                     <h2>Programas de reciclaje</h2>
                     <p>Ubicación: Quito, Ecuador<br>Fecha: 24/07/2024</p>
-                    <p>Un programa de reciclaje bien implementado no solo ayuda a proteger el planeta, sino que también aporta beneficios significativos para tu comunidad</p>
+                    <p>Un programa de reciclaje bien implementado no solo ayuda a proteger el planeta, sino que también
+                        aporta beneficios significativos para tu comunidad</p>
                 </div>
             </div>
             <button class="carousel-control prev" onclick="moveSlide(-1)">❮</button>
@@ -63,7 +67,8 @@
         <h2>Sobre Nosotros</h2>
         <p>VolunteerVision es la aplicación que conecta directamente a personas
             <br> voluntarias con entidades con proyectos de voluntariado.
-            <br> ¿Quieres unirte?</p>
+            <br> ¿Quieres unirte?
+        </p>
         <img src="{{ url_for('static', filename='assets/about.jpg') }}" alt="Sobre Nosotros" class="about-img">
     </section>
 
@@ -77,9 +82,10 @@
             </div>
             <div class="beneficio">
                 <h3>Impacto Social</h3>
-                <p>Contribuye a causas significativas y genera un impacto positivo en comunidades locales e internacionales.</p>
+                <p>Contribuye a causas significativas y genera un impacto positivo en comunidades locales e
+                    internacionales.</p>
             </div>
-    
+
             <div id="despliegue" style="display: none;">
                 <div class="beneficio">
                     <h3>Experiencia Enriquecedora</h3>
@@ -107,7 +113,7 @@
                         tus comentarios y sugerencias.</p>
                 </div>
             </div>
-    
+
             <button id="MostraMasBtn" onclick="despliegue_beneficios()">Ver más beneficios</button>
         </div>
     </section>
