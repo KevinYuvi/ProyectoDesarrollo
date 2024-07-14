@@ -98,7 +98,7 @@ def intereses():
 @app.route('/logout')
 def logout():
     session.pop('user', None)  # Cierra sesión de usuario de la sesión
-    return redirect(url_for('home'))
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.secret_key = 'your_secret_key'
