@@ -1,15 +1,19 @@
 from flask import Flask, render_template, request, redirect, url_for, session, Response
 from flask_mysqldb import MySQL, MySQLdb
+import hashlib
 
 app = Flask(__name__, template_folder='templates')
 
 app.secret_key = 'your_secret_key'
 
+#Configuracion de la base de datos
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_PASSWORD'] = '1234'
 app.config['MYSQL_DB'] = 'prueba1' #Base de datos
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+
+#Inicializar la extension de MySQL
 mysql = MySQL(app)
 
 @app.route('/')
@@ -27,7 +31,7 @@ def acceso_login():
         _password = request.form['password']
                 
         cur=mysql.connection.cursor()
-        cur.execute('SELECT * FROM usuarios WHERE email = %s AND password = %s', (_correo, _password,))
+        cur.execute("SELECT * FROM usuarios WHERE email = %s AND password = %s", (_correo, _password,))
         account = cur.fetchone()
         
         if account:
@@ -37,8 +41,7 @@ def acceso_login():
         else:
             return render_template('login.html')
 
-
-@app.route('/ingresar', methods=['GET'])
+@app.route('/ingresar', methods=['GET', 'POST'])
 def ingresar():
     return render_template('ingresar.html')
 
@@ -46,19 +49,29 @@ def ingresar():
 def registro():
         return render_template('registro.html')
     
-@app.route('/crear-registro', methods = ['GET', 'POST'])
+@app.route('/crear_registro', methods = ['GET', 'POST'])
 def crear_registro():
-    firstname = request.form['firstname']
-    lastname = request.form['lastname']
-    phone = request.form['phone']
-    country = request.form['country']
-    email = request.form['email']
-    password = request.form['password']
-    
-    cur = mysql.connection.cursor()
-    cur.execute("INSERT INTO usuarios (firstname, lastname, phone, country, email, password) VALES (%s, %s, %s, %s, %s, %s)", (firstname, lastname, phone, country, email, password))
-    mysql.connection.commit()   
-    return render_template('intereses.html')
+    if request.method == 'POST':
+        firstname = request.form['firstname']
+        lastname = request.form['lastname']
+        phone = request.form['phone']
+        country = request.form['country']
+        email = request.form['email']
+        password = request.form['password']
+
+        try:
+            cur = mysql.connection.cursor()
+            cur.execute(
+                "INSERT INTO usuarios (firstname, lastname, phone, country, email, password) VALUES (%s, %s, %s, %s, %s, %s)",
+                (firstname, lastname, phone, country, email, password)
+            )
+            mysql.connection.commit()
+            cur.close()
+            return render_template('intereses.html')
+        except Exception as e:
+            return str(e)
+
+    return render_template('crear_registro.html')
 
 @app.route('/intereses', methods=['GET', 'POST'])
 def intereses():
@@ -75,6 +88,5 @@ def logout():
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
-    app.secret_key = 'your_secret_key'
     app.run(host='localhost', debug=True, port=2024)
-    
+
