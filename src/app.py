@@ -5,7 +5,7 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__, template_folder='templates')
 
-app.secret_key = 'your_secret_key'
+app.secret_key = 'grupo6'
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
@@ -38,16 +38,17 @@ def acceso_login():
             cur.execute("SELECT * FROM usuarios WHERE email = %s AND password = %s", (_correo, _password))
             account = cur.fetchone()
             cur.close()
-            
+
             if account:
                 session['logueado'] = True
-                session['id'] = account['id']
-                return render_template("ingresar.html")
+                session['user_id'] = account['id']  # Almacenar el ID del usuario en la sesión
+                return redirect(url_for('ingresar'))
             else:
                 return render_template('login.html', error='Credenciales inválidas. Por favor, intenta nuevamente.')
         except Exception as e:
             return str(e)
     return render_template('login.html')
+
 
 @app.route('/ingresar', methods=['GET'])
 def ingresar():
@@ -57,7 +58,7 @@ def ingresar():
 def registro():
         return render_template('registro.html')
     
-@app.route('/crear_registro', methods = ['GET', 'POST'])
+@app.route('/crear_registro', methods=['GET', 'POST'])
 def crear_registro():
     if request.method == 'POST':
         firstname = request.form['firstname']
@@ -73,22 +74,41 @@ def crear_registro():
                 (firstname, lastname, phone, country, email, password)
             )
             mysql.connection.commit()
+            
+            # Obtener el ID del usuario recién insertado
+            user_id = cur.lastrowid
             cur.close()
-            return render_template('intereses.html')
+
+            # Almacenar el ID del usuario en la sesión
+            session['user_id'] = user_id
+
+            return redirect(url_for('intereses'))
         except Exception as e:
             return str(e)
 
     return render_template('crear_registro.html')
 
+
 @app.route('/intereses', methods=['GET', 'POST'])
 def intereses():
     if request.method == 'POST':
-        user_id = session.get('user_id')  # Asegúrate de que el ID del usuario esté almacenado en la sesión
-        interests = request.form.getlist('interests')  # Obtener la lista de intereses seleccionados
-        
+        user_id = session.get('user_id')  # Obtener el ID del usuario desde la sesión
+        interes = request.form.getlist('interes')  # Obtener la lista de intereses seleccionados
+
         if user_id:
-            # Actualizar la base de datos con los intereses del usuario
-            users_collection.update_one({'_id': ObjectId(user_id)}, {'$set': {'interests': interests}})
+            # Crear el documento para MongoDB
+            usuario_intereses = {
+                "_id": str(user_id),
+                "intereses": ', '.join(interes)  # Convertir la lista de intereses en una cadena separada por comas
+            }
+
+            # Insertar o actualizar el documento en la colección de MongoDB
+            users_collection.update_one(
+                {'_id': usuario_intereses['_id']}, 
+                {'$set': usuario_intereses}, 
+                upsert=True
+            )
+
             return redirect(url_for('index'))
         else:
             return redirect(url_for('login'))  # Redirigir al inicio de sesión si el ID de usuario no está disponible
@@ -101,6 +121,6 @@ def logout():
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.secret_key = 'your_secret_key'
+    app.secret_key = 'grupo6'
     app.run(host='localhost', debug=True, port=2024)
     
