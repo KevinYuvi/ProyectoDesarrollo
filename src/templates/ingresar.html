@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingresar - VolunteerVision</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}">
+    <title>Voluntariados</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sty.css') }}">
 </head>
-
-<body class="ingresar">
+<body>
     <header>
         <div class="logo">
             <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="VolunteerVision Logo">
@@ -25,53 +23,119 @@
             </div>
         </nav>
     </header>
-    <main>
-        <div class="container">
-            <h1>Bienvenido!</h1>
-            <section class="proyectos-activos">
-                <h2>Proyectos Activos</h2>
-                <div class="proyecto">
-                    <h3>Ayuda Refugio de animales</h3>
-                    <p>Ubicación: Quito, Ecuador</p>
-                    <p>Fecha: 16/08/2024</p>
-                    <button class="completar-btn">Completar</button>
-                    <button class="eliminar-btn">Eliminar</button>
-                </div>
-            </section>
-            <section class="recomendaciones">
-                <h2>Recomendaciones</h2>
-                <div class="proyecto">
-                    <h3>Ayuda Refugio de animales</h3>
-                    <p>Ubicación: Quito, Ecuador</p>
-                    <p>Fecha: 16/08/2024</p>
-                    <button class="info-btn">Más información</button>
-                    <button class="aplicar-btn">Aplicar</button>
-                </div>
-            </section>
-            <section class="buscar-voluntariados">
-                <h2>Buscar Voluntariados</h2>
-                <input type="text" placeholder="Búsqueda">
-            </section>
-            <aside class="estadisticas">
-                <h2>Tus Estadísticas</h2>
-                <p>Proyectos Completos: 2</p>
-                <p>Proyectos Activos: 1</p>
-            </aside>
-    </main>
+
+    <div class="container">
+        <!-- Primer bloque: Voluntariados recomendados -->
+        <div class="recommended-block">
+            <h1>Voluntariados Recomendados</h1>
+            <div id="recommended-container" class="scroll-container"></div>
+        </div>
+
+        <!-- Segundo bloque: Barra de búsqueda -->
+        <div class="search-block">
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Buscar voluntariados...">
+                <button onclick="buscarVoluntariados()">Buscar</button>
+            </div>
+        </div>
+
+        <!-- Tercer bloque: Resultados de búsqueda -->
+        <div class="results-block">
+            <h1>Resultados de la Búsqueda</h1>
+            <div id="search-results-container" class="scroll-container"></div>
+        </div>
     </div>
+
     <footer id="footer">
         <div class="social-media">
-            <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='assets/facebook.png') }}"
-                    alt="Facebook"></a>
-            <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='assets/instagram.png') }}"
-                    alt="Instagram"></a>
+            <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='assets/facebook.png') }}" alt="Facebook"></a>
+            <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='assets/instagram.png') }}" alt="Instagram"></a>
             <a href="https://x.com/home"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
         </div>
         <div class="contact">
             <p>&copy; 2024 VolunteerVision. Todos los derechos reservados.</p>
         </div>
     </footer>
-    <script src="/src/static/js/script.js"></script>
-</body>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            obtenerRecomendaciones();
+        });
+
+        function obtenerRecomendaciones() {
+            fetch('/api/recommendations', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ userId: '{{ session["user_id"] }}' }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                var recommendedContainer = document.getElementById('recommended-container');
+                recommendedContainer.innerHTML = '';
+
+                data.recommendations.forEach(voluntariado => {
+                    var voluntariadoDiv = document.createElement('div');
+                    voluntariadoDiv.classList.add('voluntariado');
+
+                    var title = document.createElement('h2');
+                    title.textContent = voluntariado.title;
+
+                    var description = document.createElement('p');
+                    description.textContent = voluntariado.description;
+
+                    var link = document.createElement('a');
+                    link.href = voluntariado.link;
+                    link.textContent = 'Ver más';
+
+                    voluntariadoDiv.appendChild(title);
+                    voluntariadoDiv.appendChild(description);
+                    voluntariadoDiv.appendChild(link);
+
+                    recommendedContainer.appendChild(voluntariadoDiv);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function buscarVoluntariados() {
+            const query = document.getElementById('search-input').value || '';
+            fetch('/api/search', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ query: query }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                var searchResultsContainer = document.getElementById('search-results-container');
+                searchResultsContainer.innerHTML = '';
+
+                data.voluntariados.forEach(voluntariado => {
+                    var voluntariadoDiv = document.createElement('div');
+                    voluntariadoDiv.classList.add('voluntariado');
+
+                    var title = document.createElement('h2');
+                    title.textContent = voluntariado.title;
+
+                    var description = document.createElement('p');
+                    description.textContent = voluntariado.description;
+
+                    var link = document.createElement('a');
+                    link.href = voluntariado.link;
+                    link.textContent = 'Ver más';
+
+                    voluntariadoDiv.appendChild(title);
+                    voluntariadoDiv.appendChild(description);
+                    voluntariadoDiv.appendChild(link);
+
+                    searchResultsContainer.appendChild(voluntariadoDiv);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
 </html>
