@@ -9,7 +9,7 @@ La aplicación web de voluntariado permitirá a los usuarios (voluntarios) y org
 ## FUNCIONALIDADES
 
 - Interfaz fácil de usar para la interacción con la plataforma.
-- Integración de API keys para el análisis de datos.
+- Recomendaciones basadas en los interes de usuarios usando similitud coseno
 - Voluntariados para todos los tipos de personas.
 
 ## ¿CÓMO LO INSTALO?

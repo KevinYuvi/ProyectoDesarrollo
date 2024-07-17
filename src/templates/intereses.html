@@ -15,12 +15,10 @@
             <span class="company-name">VolunteerVision</span>
         </div>
         <nav>
-            <div class="nav-left">
-                <ul>
-                    <li><a href="{{ url_for('index') }}">Inicio</a></li>
-                    <li><a href="#footer">Sobre Nosotros</a></li>
-                </ul>
-            </div>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/registro">Registrarse</a></li>
+            </ul>
         </nav>
     </header>
     <div class="container">
@@ -29,7 +27,8 @@
                 <h1>¿Qué te interesa?</h1>
                 <form method="POST" action="{{ url_for('intereses') }}">
                     <label class="remember-me">
-                        <input type="checkbox" name="interes" value="Tecnología y educación digital"> Tecnología y educación digital
+                        <input type="checkbox" name="interes" value="Tecnología y educación digital"> Tecnología y
+                        educación digital
                     </label>
                     <label class="remember-me">
                         <input type="checkbox" name="interes" value="Jardinería"> Jardinería
@@ -38,10 +37,12 @@
                         <input type="checkbox" name="interes" value="Reciclaje"> Reciclaje
                     </label>
                     <label class="remember-me">
-                        <input type="checkbox" name="interes" value="Contribuir a la comunidad"> Contribuir a la comunidad
+                        <input type="checkbox" name="interes" value="Contribuir a la comunidad"> Contribuir a la
+                        comunidad
                     </label>
                     <label class="remember-me">
-                        <input type="checkbox" name="interes" value="Protección del medio ambiente"> Protección del medio ambiente
+                        <input type="checkbox" name="interes" value="Protección del medio ambiente"> Protección del
+                        medio ambiente
                     </label>
                     <label class="remember-me">
                         <input type="checkbox" name="interes" value="Animales"> Animales
@@ -56,7 +57,8 @@
                         <input type="checkbox" name="interes" value="Deporte y recreación"> Deporte y recreación
                     </label>
                     <label class="remember-me">
-                        <input type="checkbox" name="interes" value="Trabajo con personas mayores"> Trabajo con personas mayores
+                        <input type="checkbox" name="interes" value="Trabajo con personas mayores"> Trabajo con personas
+                        mayores
                     </label>
                     <label class="remember-me">
                         <input type="checkbox" name="interes" value="Asistencia en desastres"> Asistencia en desastres
@@ -65,7 +67,8 @@
                         <input type="checkbox" name="interes" value="Justicia Social"> Justicia Social
                     </label>
                     <label class="remember-me">
-                        <input type="checkbox" name="interes" value="Construcción y renovación"> Construcción y renovación
+                        <input type="checkbox" name="interes" value="Construcción y renovación"> Construcción y
+                        renovación
                     </label>
 
                     <p><a href="#">Mostrar más</a></p>
@@ -82,10 +85,10 @@
     <footer id="footer">
         <div class="social-media">
             <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='assets/facebook.png') }}"
-                alt="Facebook"></a>
-        <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='assets/instagram.png') }}"
-                alt="Instagram"></a>
-        <a href="https://x.com/home"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
+                    alt="Facebook"></a>
+            <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='assets/instagram.png') }}"
+                    alt="Instagram"></a>
+            <a href="https://x.com/home"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
         </div>
         <div class="contact">
             <p>&copy; 2024 VolunteerVision. Todos los derechos reservados.</p>

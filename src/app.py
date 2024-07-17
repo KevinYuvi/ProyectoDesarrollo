@@ -49,7 +49,10 @@ def acceso_login():
                 session['user_id'] = account['id']  # Almacenar el ID del usuario en la sesión
                 return redirect(url_for('ingresar'))
             else:
-                return render_template('login.html', error='Credenciales inválidas. Por favor, intenta nuevamente.')
+                #Validacion de usuario y contraseña
+                flash("Credenciales inválidas. Por favor, intenta nuevamente.", "error")
+                return redirect(url_for('login'))
+        
         except Exception as e:
             return str(e)
     return render_template('login.html')
@@ -74,8 +77,38 @@ def crear_registro():
         country = request.form['country']
         email = request.form['email']
         password = request.form['password']
+        confirm_password = request.form['confirm_password']
+        
+        #Validacion campo telefono
+        if not phone.isdigit():
+            flash("El campo de teléfono solo debe contener números.", "error")
+            return redirect(url_for('registro'))
+        
+        #Validacion campo nombre
+        if not firstname.isalpha():
+            flash("El campo de nombre solo debe contener letras.", "error")
+            return redirect(url_for('registro'))
+        
+        #Validacion campo apellido
+        if not lastname.isalpha():
+            flash("El campo de apellido solo debe contener letras.", "error")
+            return redirect(url_for('registro'))
+
+        #Validacion campo confirmar contraseña
+        if password != confirm_password:
+            flash("Las contraseñas no coinciden. Por favor, inténtelo de nuevo.", "error")
+            return redirect(url_for('registro'))
+          
         try:
-            cur = mysql.connection.cursor()
+            #Validacion de correo existente
+            cur = mysql.connection.cursor() 
+            cur.execute("SELECT email FROM usuarios WHERE email = %s", (email,))
+            existing_email = cur.fetchone()  
+            if existing_email:
+                flash("El correo ya está registrado. Por favor, use otro correo.", "error")
+                return redirect(url_for('registro'))
+            
+            #Insertar el registro correcto en la base
             cur.execute(
                 "INSERT INTO usuarios (firstname, lastname, phone, country, email, password) VALUES (%s, %s, %s, %s, %s, %s)",
                 (firstname, lastname, phone, country, email, password)
