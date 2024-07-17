@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voluntariados</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/sty.css') }}">
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -17,6 +19,7 @@
                 <li><a href="#">Proyectos Activos</a></li>
                 <li><a href="#">Recomendaciones</a></li>
                 <li><a href="#">Buscar Voluntariados</a></li>
+                <li><a href="/chatbot">ChatBot</a></li>
             </ul>
             <div class="header-right">
                 <button class="login-btn" onclick="window.location.href='/logout'">Cerrar Sesión</button>
@@ -48,8 +51,10 @@
 
     <footer id="footer">
         <div class="social-media">
-            <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='assets/facebook.png') }}" alt="Facebook"></a>
-            <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='assets/instagram.png') }}" alt="Instagram"></a>
+            <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='assets/facebook.png') }}"
+                    alt="Facebook"></a>
+            <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='assets/instagram.png') }}"
+                    alt="Instagram"></a>
             <a href="https://x.com/home"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
         </div>
         <div class="contact">
@@ -58,7 +63,7 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             obtenerRecomendaciones();
         });
 
@@ -70,33 +75,33 @@
                 },
                 body: JSON.stringify({ userId: '{{ session["user_id"] }}' }),
             })
-            .then(response => response.json())
-            .then(data => {
-                var recommendedContainer = document.getElementById('recommended-container');
-                recommendedContainer.innerHTML = '';
+                .then(response => response.json())
+                .then(data => {
+                    var recommendedContainer = document.getElementById('recommended-container');
+                    recommendedContainer.innerHTML = '';
 
-                data.recommendations.forEach(voluntariado => {
-                    var voluntariadoDiv = document.createElement('div');
-                    voluntariadoDiv.classList.add('voluntariado');
+                    data.recommendations.forEach(voluntariado => {
+                        var voluntariadoDiv = document.createElement('div');
+                        voluntariadoDiv.classList.add('voluntariado');
 
-                    var title = document.createElement('h2');
-                    title.textContent = voluntariado.title;
+                        var title = document.createElement('h2');
+                        title.textContent = voluntariado.title;
 
-                    var description = document.createElement('p');
-                    description.textContent = voluntariado.description;
+                        var description = document.createElement('p');
+                        description.textContent = voluntariado.description;
 
-                    var link = document.createElement('a');
-                    link.href = voluntariado.link;
-                    link.textContent = 'Ver más';
+                        var link = document.createElement('a');
+                        link.href = voluntariado.link;
+                        link.textContent = 'Ver más';
 
-                    voluntariadoDiv.appendChild(title);
-                    voluntariadoDiv.appendChild(description);
-                    voluntariadoDiv.appendChild(link);
+                        voluntariadoDiv.appendChild(title);
+                        voluntariadoDiv.appendChild(description);
+                        voluntariadoDiv.appendChild(link);
 
-                    recommendedContainer.appendChild(voluntariadoDiv);
-                });
-            })
-            .catch(error => console.error('Error:', error));
+                        recommendedContainer.appendChild(voluntariadoDiv);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
         }
 
         function buscarVoluntariados() {
@@ -108,34 +113,35 @@
                 },
                 body: JSON.stringify({ query: query }),
             })
-            .then(response => response.json())
-            .then(data => {
-                var searchResultsContainer = document.getElementById('search-results-container');
-                searchResultsContainer.innerHTML = '';
+                .then(response => response.json())
+                .then(data => {
+                    var searchResultsContainer = document.getElementById('search-results-container');
+                    searchResultsContainer.innerHTML = '';
 
-                data.voluntariados.forEach(voluntariado => {
-                    var voluntariadoDiv = document.createElement('div');
-                    voluntariadoDiv.classList.add('voluntariado');
+                    data.voluntariados.forEach(voluntariado => {
+                        var voluntariadoDiv = document.createElement('div');
+                        voluntariadoDiv.classList.add('voluntariado');
 
-                    var title = document.createElement('h2');
-                    title.textContent = voluntariado.title;
+                        var title = document.createElement('h2');
+                        title.textContent = voluntariado.title;
 
-                    var description = document.createElement('p');
-                    description.textContent = voluntariado.description;
+                        var description = document.createElement('p');
+                        description.textContent = voluntariado.description;
 
-                    var link = document.createElement('a');
-                    link.href = voluntariado.link;
-                    link.textContent = 'Ver más';
+                        var link = document.createElement('a');
+                        link.href = voluntariado.link;
+                        link.textContent = 'Ver más';
 
-                    voluntariadoDiv.appendChild(title);
-                    voluntariadoDiv.appendChild(description);
-                    voluntariadoDiv.appendChild(link);
+                        voluntariadoDiv.appendChild(title);
+                        voluntariadoDiv.appendChild(description);
+                        voluntariadoDiv.appendChild(link);
 
-                    searchResultsContainer.appendChild(voluntariadoDiv);
-                });
-            })
-            .catch(error => console.error('Error:', error));
+                        searchResultsContainer.appendChild(voluntariadoDiv);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
         }
     </script>
 </body>
+
 </html>

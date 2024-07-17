@@ -1,14 +1,16 @@
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify, flash
 from flask_mysqldb import MySQL
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+import openai
 
 
 app = Flask(__name__, template_folder='templates')
 
+openai.api_key = ''
 app.secret_key = 'your_secret_key'
 
 app.config['MYSQL_HOST'] = 'localhost'
@@ -227,6 +229,33 @@ def search_voluntariados():
 
     return jsonify({'voluntariados': recomendaciones})
 
+@app.route('/chatbot', methods=['GET', 'POST'])
+def chatbot():
+    if "conversation" not in session:
+        session["conversation"] = ""
+    
+    if request.method == "POST":
+        user_input = request.form.get("user_input")
+        
+        if user_input:
+            try:
+                response = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo",
+                    messages=[
+                        {"role": "system", "content": "Tienes el rol de ayudar con información extra sobre proyectos de voluntariado"},
+                        {"role": "user", "content": user_input}
+                    ]
+                )
+                
+                if response.choices:
+                    chatbot_response = response.choices[0].message['content']
+                    session["conversation"] += f"Usuario: {user_input}\nVolunterVision: {chatbot_response}\n"
+                else:
+                    session["conversation"] += "Error al hacer la petición\n"
+            except Exception as e:
+                session["conversation"] += f"Error {str(e)}\n"
+    
+    return render_template("chatbot.html", conversation=session["conversation"])  
 
 @app.route('/logout')
 def logout():

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - VolunteerVision</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        .chat-entry {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="VolunteerVision Logo">
+            <span class="company-name">VolunteerVision</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/registro">Registrarse</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-left">
+                <h1>ChatBot-VolunterVision</h1>
+                <form method="POST" action="/chatbot">
+                    <input type="text" name="user_input" placeholder="Escribe tu pregunta...">
+                    <button type="submit">Enviar</button>
+                </form>
+                <label id="chat-label"></label>
+            </div>
+            <div class="form-right">
+                <img src="/static/assets/manos.png" alt="Hands around the world">
+            </div>
+        </div>
+    </div>
+    </main>
+    <footer id="footer">
+        <div class="social-media">
+            <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='assets/facebook.png') }}"
+                    alt="Facebook"></a>
+            <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='assets/instagram.png') }}"
+                    alt="Instagram"></a>
+            <a href="https://x.com/home"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
+        </div>
+        <div class="contact">
+            <p>&copy; 2024 VolunteerVision. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script>
+        const conversation = `{{ conversation|safe }}`;
+        const conversationFormateada = conversation.split("\n").map(line => {
+            if (line.startsWith("Usuario: ") || line.startsWith("VolunterVision: ")) {
+                return `<div class="chat-entry"><strong>${line.split(":")[0]}:</strong> ${line.split(":").slice(1).join(":")}</div>`;
+            } else {
+                return `<div class="chat-entry">${line}</div>`;
+            }
+        }).join("");
+        document.getElementById("chat-label").innerHTML = conversationFormateada;
+    </script>
+</body>
+
+</html>
