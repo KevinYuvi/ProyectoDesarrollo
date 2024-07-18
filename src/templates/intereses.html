@@ -15,12 +15,10 @@
             <span class="company-name">VolunteerVision</span>
         </div>
         <nav>
-            <div class="nav-left">
-                <ul>
-                    <li><a href="{{ url_for('index') }}">Inicio</a></li>
-                    <li><a href="#footer">Sobre Nosotros</a></li>
-                </ul>
-            </div>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/registro">Registrarse</a></li>
+            </ul>
         </nav>
     </header>
     <div class="container">
@@ -82,10 +80,10 @@
     <footer id="footer">
         <div class="social-media">
             <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='assets/facebook.png') }}"
-                alt="Facebook"></a>
-        <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='assets/instagram.png') }}"
-                alt="Instagram"></a>
-        <a href="https://x.com/home"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
+                    alt="Facebook"></a>
+            <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='assets/instagram.png') }}"
+                    alt="Instagram"></a>
+            <a href="https://x.com/home"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
         </div>
         <div class="contact">
             <p>&copy; 2024 VolunteerVision. Todos los derechos reservados.</p>

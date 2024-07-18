@@ -136,7 +136,13 @@ form label {
     margin-top: 10px;
 }
 
+
 form input {
+    padding: 10px;
+    margin-top: 5px;
+}
+
+form select {
     padding: 10px;
     margin-top: 5px;
 }
@@ -172,6 +178,15 @@ form button:hover {
     width: 800px;
     max-width: 100%;
 }
+
+.form-control {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    max-width: 100%;
+}
+
 
 .carousel {
     display: flex;
@@ -276,6 +291,10 @@ footer .contact form button:hover {
 }
 
 .login-form label {
+    margin: 10px 0 5px;
+}
+
+.login-form select {
     margin: 10px 0 5px;
 }
 
