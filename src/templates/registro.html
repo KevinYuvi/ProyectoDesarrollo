@@ -77,10 +77,6 @@
                         <label for="confirm_password">Confirmar contraseña: </label>
                         <input type="password" id="confirm_password" name="confirm_password" required>
 
-                        <label class="remember-me">
-                            <input type="checkbox" name="remember"> Recordar
-                        </label>
-
                         <button type="submit">Registrarse</button>
                     </form>
                     <p>¿Tienes una cuenta? <a href="{{ url_for('login') }}">Inicia Sesión</a></p>
@@ -90,19 +86,19 @@
                 </div>
             </div>
         </div>
-        <footer id="footer">
-            <div class="social-media">
-                <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='assets/facebook.png') }}"
-                        alt="Facebook"></a>
-                <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='assets/instagram.png') }}"
-                        alt="Instagram"></a>
-                <a href="https://x.com/home"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
-            </div>
-            <div class="contact">
-                <p>&copy; 2024 VolunteerVision. Todos los derechos reservados.</p>
-            </div>
-        </footer>
-        <script src="/src/static/js/script.js"></script>
+    </div>
+    <script src="/src/static/js/script.js"></script>
+    <footer id="footer">
+        <div class="social-media">
+            <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='assets/facebook.png') }}"
+                    alt="Facebook"></a>
+            <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='assets/instagram.png') }}"
+                    alt="Instagram"></a>
+            <a href="https://x.com/home"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
+        </div>
+        <div class="contact">
+            <p>&copy; 2024 VolunteerVision. Todos los derechos reservados.</p>
+        </div>
+    </footer> 
 </body>
-
 </html>

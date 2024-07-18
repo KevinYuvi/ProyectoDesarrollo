@@ -127,7 +127,7 @@ h1 {
 /* Estilos para la barra de búsqueda */
 .search-bar {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     gap: 10px;
 }
 
@@ -210,15 +210,13 @@ footer .contact form button {
     background: #e74c3c;
     color: white;
     border-radius: 5px;
-    transition: background 0.3s;
+    transition: background 0.
+    3s;
 }
 
 footer .contact form button:hover {
     background: #c0392b;
 }
-
-
-
 
 /* Reset de algunos estilos por defecto */
 body,
@@ -282,10 +280,12 @@ header nav ul li a:hover {
     height: auto;
     margin-right: 10px;
 }
+
 .auth-buttons {
     display: flex;
     gap: 10px;
 }
+
 .login-btn,
 .signup-btn {
     padding: 10px 20px;
@@ -295,4 +295,16 @@ header nav ul li a:hover {
 
 .login-btn {
     background-color: #f0ad4e;
+}
+
+/* Estilos para los resultados de búsqueda */
+.search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.search-results .voluntariado {
+    width: 100%; /* Asegura que los resultados ocupen todo el ancho disponible */
+    margin: 10px 0; /* Espaciado entre los resultados */
 }
