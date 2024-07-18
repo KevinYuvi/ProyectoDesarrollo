@@ -53,7 +53,7 @@ header nav ul li a {
 }
 
 .container {
-    padding: 10px;
+    padding: 20px;
 }
 
 h1 {
@@ -90,7 +90,7 @@ h1 {
 .scroll-container {
     display: flex;
     overflow-x: auto; /* Desplazamiento horizontal */
-    gap: 10px;
+    gap: 20px;
 }
 
 .voluntariado {
@@ -152,15 +152,147 @@ h1 {
     background-color: #0056b3;
 }
 
-/* Estilos del pie de página */
-#footer {
-    background-color: #333;
+footer {
+    background: #2c3e50;
     color: white;
-    padding: 10px 0;
+    padding: 2rem;
     text-align: center;
 }
 
-.social-media a img {
-    height: 30px;
-    margin: 0 10px;
+
+footer nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+footer nav ul li {
+    margin: 0;
+}
+
+footer nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+footer nav ul li a:hover {
+    background: #34495e;
+}
+
+footer .social-media a img {
+    width: 30px;
+    margin: 0 0.5rem;
+}
+
+footer .contact p {
+    margin: 1rem 0;
+}
+
+footer .contact form {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+footer .contact form input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+
+footer .contact form button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: #e74c3c;
+    color: white;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+footer .contact form button:hover {
+    background: #c0392b;
+}
+
+
+
+
+/* Reset de algunos estilos por defecto */
+body,
+h1,
+h2,
+p,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+header nav ul li {
+    margin: 0;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+header nav ul li a:hover {
+    background: #34495e;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+    margin-right: 10px;
+}
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+.login-btn,
+.signup-btn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.login-btn {
+    background-color: #f0ad4e;
 }
