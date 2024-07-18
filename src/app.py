@@ -5,6 +5,7 @@ from bson.objectid import ObjectId
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+import pandas as pd
 
 
 app = Flask(__name__, template_folder='templates')
@@ -22,7 +23,7 @@ mysql = MySQL(app)
 
 client = MongoClient("mongodb://localhost:27017/")
 db = client["voluntariado"]
-users_collection = db["usuarios"]
+usuarios_collection = db["usuarios"]
 oportunidades_collection = db["oportunidades"]
 
 @app.route('/')
@@ -97,19 +98,22 @@ def crear_registro():
 
 @app.route('/intereses', methods=['GET', 'POST'])
 def intereses():
-    if request.method == 'POST':
-        user_id = session.get('user_id')  # Obtener el ID del usuario desde la sesión
-        interests = request.form.getlist('interests')  # Obtener la lista de intereses seleccionados
+    user_id = session.get('user_id')  # Obtener el ID del usuario desde la sesión
+    if not user_id:
+        return redirect(url_for('login'))  # Redirigir al inicio de sesión si el ID de usuario no está disponible
 
-        if user_id:
+    if request.method == 'POST':
+        intereses = request.form.getlist('intereses')  # Obtener la lista de intereses seleccionados
+
+        if intereses:
             # Crear el documento para MongoDB
             user_interests_document = {
                 "_id": str(user_id),
-                "intereses": ', '.join(interests)  # Convertir la lista de intereses en una cadena separada por comas
+                "intereses": ', '.join(intereses)  # Convertir la lista de intereses en una cadena separada por comas
             }
 
             # Insertar o actualizar el documento en la colección de MongoDB
-            users_collection.update_one(
+            usuarios_collection.update_one(
                 {'_id': user_interests_document['_id']}, 
                 {'$set': user_interests_document}, 
                 upsert=True
@@ -117,54 +121,57 @@ def intereses():
 
             return redirect(url_for('index'))
         else:
-            return redirect(url_for('login'))  # Redirigir al inicio de sesión si el ID de usuario no está disponible
-
+            return render_template('intereses.html', error='Por favor, selecciona al menos un interés.')
+    
     return render_template('intereses.html')
 
-@app.route('/api/recommendations', methods=['POST'])
-def get_recommendations():
-    user_id = session.get('user_id')
 
-    usuario = users_collection.find_one({"_id": str(user_id)})
+
+# Función para obtener recomendaciones basadas en intereses de usuario
+def obtener_recomendaciones(usuario_id, umbral_similitud=0.1):
+    usuario = usuarios_collection.find_one({"_id": usuario_id})
     if not usuario:
-        return jsonify({'error': 'Usuario no encontrado'}), 404
+        return []
 
-    intereses_usuario = usuario.get("intereses", "").split(', ')
+    intereses_usuario = usuario.get("intereses", "")
+    if not intereses_usuario:
+        # Retorna un mensaje indicando que no hay intereses disponibles
+        return [{"title": "No hay intereses", "description": "El usuario no tiene intereses seleccionados", "link": "#"}]
 
     oportunidades = list(oportunidades_collection.find())
-
     if not oportunidades:
-        return jsonify({'error': 'No hay oportunidades disponibles'}), 404
+        return []
 
-    # Preparar las descripciones de las oportunidades y el interés del usuario para TF-IDF
-    textos = [oportunidad['description'] for oportunidad in oportunidades]
-    textos.append(', '.join(intereses_usuario))  # Agrega los intereses del usuario como un documento adicional
+    df = pd.DataFrame(oportunidades)
 
-    # Vectorización TF-IDF
-    vectorizer = TfidfVectorizer()
-    tfidf_matrix = vectorizer.fit_transform(textos)
+    tfidf = TfidfVectorizer(stop_words='english')
+    tfidf_matrix = tfidf.fit_transform([intereses_usuario] + list(df['description']))
+    cosine_sim = cosine_similarity(tfidf_matrix[0:1], tfidf_matrix[1:]).flatten()
 
-    # Calcula el vector TF-IDF del interés del usuario
-    vector_interes = tfidf_matrix[-1]  # El último vector es el del interés del usuario
+    # Filtrar oportunidades por umbral de similitud
+    indices_similares = [i for i, sim in enumerate(cosine_sim) if sim >= umbral_similitud]
 
-    # Calcula similitud coseno entre el vector de interés del usuario y cada oportunidad
-    similarities = cosine_similarity(vector_interes, tfidf_matrix[:-1])  # Excluye el último que es el interés del usuario
-
-    # Ordena las oportunidades por similitud coseno descendente
-    sim_scores = list(enumerate(similarities[0]))
-    sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
-
-    # Obtén las recomendaciones basadas en la similitud coseno
     recomendaciones = []
-    for index, score in sim_scores[:5]:  # Limita a las 5 mejores recomendaciones
-        oportunidad = oportunidades[index]
+    for idx in indices_similares:
         recomendaciones.append({
-            'title': oportunidad['title'],
-            'description': oportunidad['description'][:100] + '...',  # Limita la descripción si es necesario
-            'link': oportunidad['link']
+            'title': df.iloc[idx]['title'],
+            'description': df.iloc[idx]['description'],
+            'link': df.iloc[idx]['link']
         })
 
+    return recomendaciones
+
+# Ruta para obtener recomendaciones mediante API
+@app.route('/api/recommendations', methods=['POST'])
+def get_recommendations():
+    data = request.get_json()
+    user_id = data.get('userId')
+    umbral_similitud = data.get('umbralSimilitud', 0.01)  # Obtener el umbral de similitud del cuerpo de la solicitud, valor por defecto es 0.1
+
+    recomendaciones = obtener_recomendaciones(user_id, umbral_similitud)
+    
     return jsonify({'recommendations': recomendaciones})
+
 
 @app.route('/api/search', methods=['POST'])
 def search_voluntariados():

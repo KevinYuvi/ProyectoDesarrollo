@@ -5,6 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voluntariados</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/sty.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+    <style>
+        .voluntariado {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            width: 300px; /* Ancho fijo para todas las tarjetas */
+            overflow: hidden;
+        }
+
+        .voluntariado h2 {
+            font-size: 18px;
+            margin: 0 0 10px;
+        }
+
+        .voluntariado p {
+            font-size: 14px;
+            height: 60px; /* Altura fija para las descripciones */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-line-clamp: 3; /* Número de líneas a mostrar */
+            line-clamp: 3; /* Propiedad estándar */
+            -webkit-box-orient: vertical;
+            box-orient: vertical; /* Propiedad estándar */
+        }
+
+        .voluntariado a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .slick-prev, .slick-next {
+            background: #333;
+            border-radius: 50%;
+            padding: 10px;
+            color: #fff;
+        }
+
+        .slick-prev:hover, .slick-next:hover {
+            background: #555;
+        }
+
+        .slick-slide {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -17,10 +74,8 @@
                 <li><a href="#">Proyectos Activos</a></li>
                 <li><a href="#">Recomendaciones</a></li>
                 <li><a href="#">Buscar Voluntariados</a></li>
+                <li><button class="login-btn" onclick="window.location.href='/logout'">Cerrar Sesión</button></li>
             </ul>
-            <div class="header-right">
-                <button class="login-btn" onclick="window.location.href='/logout'">Cerrar Sesión</button>
-            </div>
         </nav>
     </header>
 
@@ -28,7 +83,7 @@
         <!-- Primer bloque: Voluntariados recomendados -->
         <div class="recommended-block">
             <h1>Voluntariados Recomendados</h1>
-            <div id="recommended-container" class="scroll-container"></div>
+            <div id="recommended-container" class="carousel"></div>
         </div>
 
         <!-- Segundo bloque: Barra de búsqueda -->
@@ -42,7 +97,7 @@
         <!-- Tercer bloque: Resultados de búsqueda -->
         <div class="results-block">
             <h1>Resultados de la Búsqueda</h1>
-            <div id="search-results-container" class="scroll-container"></div>
+            <div id="search-results-container" class="carousel"></div>
         </div>
     </div>
 
@@ -57,9 +112,19 @@
         </div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             obtenerRecomendaciones();
+            buscarVoluntariados();
+            $('.carousel').slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                prevArrow: '<button type="button" class="slick-prev">Prev</button>',
+                nextArrow: '<button type="button" class="slick-next">Next</button>'
+            });
         });
 
         function obtenerRecomendaciones() {
@@ -94,6 +159,16 @@
                     voluntariadoDiv.appendChild(link);
 
                     recommendedContainer.appendChild(voluntariadoDiv);
+                });
+
+                // Reinitialize slick carousel
+                $('.carousel').slick('unslick');
+                $('.carousel').slick({
+                    infinite: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    prevArrow: '<button type="button" class="slick-prev">Prev</button>',
+                    nextArrow: '<button type="button" class="slick-next">Next</button>'
                 });
             })
             .catch(error => console.error('Error:', error));
@@ -132,6 +207,16 @@
                     voluntariadoDiv.appendChild(link);
 
                     searchResultsContainer.appendChild(voluntariadoDiv);
+                });
+
+                // Reinitialize slick carousel
+                $('.carousel').slick('unslick');
+                $('.carousel').slick({
+                    infinite: true,
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    prevArrow: '<button type="button" class="slick-prev">Prev</button>',
+                    nextArrow: '<button type="button" class="slick-next">Next</button>'
                 });
             })
             .catch(error => console.error('Error:', error));
