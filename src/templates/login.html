@@ -1,77 +1,85 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - VolunteerVision</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <!-- Definición del tipo de documento como HTML5 -->
+    <meta charset="UTF-8"> <!-- Codificación de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configuración del viewport para dispositivos móviles -->
+    <title>Iniciar Sesión - VolunteerVision</title> <!-- Título de la página que aparece en la pestaña del navegador -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"> <!-- Enlace al archivo CSS para el estilo de la página -->
 </head>
-
 <body>
     <header>
+        <!-- Encabezado de la página con el logo y la navegación principal -->
         <div class="logo">
-            <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="VolunteerVision Logo">
-            <span class="company-name">VolunteerVision</span>
+            <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="VolunteerVision Logo"> <!-- Imagen del logo -->
+            <span class="company-name">VolunteerVision</span> <!-- Nombre de la empresa -->
         </div>
         <nav>
+            <!-- Menú de navegación principal -->
             <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/registro">Registrarse</a></li>
+                <li><a href="/">Inicio</a></li> <!-- Enlace a la página principal -->
+                <li><a href="/registro">Registrarse</a></li> <!-- Enlace a la página de registro -->
             </ul>
         </nav>
     </header>
+
     <div class="container">
+        <!-- Bloque para mostrar mensajes flash -->
         {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
         {% for category, message in messages %}
+        <!-- Mostrar el mensaje según su categoría -->
         {% if category == 'error' %}
-        <div class="alert alert-error">{{ message }}</div>
+        <div class="alert alert-error">{{ message }}</div> <!-- Mensaje de error -->
         {% else %}
-        <div class="alert alert-{{ category }}">{{ message }}</div>
+        <div class="alert alert-{{ category }}">{{ message }}</div> <!-- Mensaje de otra categoría -->
         {% endif %}
         {% endfor %}
         {% endif %}
         {% endwith %}
 
         <div class="container">
+            <!-- Contenedor para el formulario de inicio de sesión y la imagen -->
             <div class="form-container">
                 <div class="form-left">
-
+                    <!-- Sección que contiene el formulario de inicio de sesión -->
                     <h1>Iniciar Sesión</h1>
                     <form method="POST" action="acceso_login">
+                        <!-- Formulario de inicio de sesión -->
                         <label for="email">Correo electrónico</label>
-                        <input type="text" id="email" name="email" required>
+                        <input type="text" id="email" name="email" required> <!-- Campo para el correo electrónico -->
 
                         <label for="password">Contraseña</label>
-                        <input type="password" id="password" name="password" required>
+                        <input type="password" id="password" name="password" required> <!-- Campo para la contraseña -->
 
                         <label class="remember-me">
-                            <input type="checkbox" name="remember"> Recordar
+                            <input type="checkbox" name="remember"> Recordar <!-- Casilla de verificación para recordar sesión -->
                         </label>
 
-                        <button type="submit">Ingresar</button>
+                        <button type="submit">Ingresar</button> <!-- Botón para enviar el formulario -->
                     </form>
-                    <p>¿No tienes una cuenta? <a href="{{ url_for('registro') }}">Crear una cuenta</a></p>
+                    <p>¿No tienes una cuenta? <a href="{{ url_for('registro') }}">Crear una cuenta</a></p> <!-- Enlace para crear una cuenta -->
                 </div>
                 <div class="form-right">
-                    <img src="/static/assets/manos.png" alt="Hands around the world">
+                    <!-- Sección que contiene una imagen representativa -->
+                    <img src="/static/assets/manos.png" alt="Hands around the world"> <!-- Imagen de manos alrededor del mundo -->
                 </div>
             </div>
         </div>
-        <footer id="footer">
-            <div class="social-media">
-                <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='assets/facebook.png') }}"
-                        alt="Facebook"></a>
-                <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='assets/instagram.png') }}"
-                        alt="Instagram"></a>
-                <a href="https://x.com/home"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a>
-            </div>
-            <div class="contact">
-                <p>&copy; 2024 VolunteerVision. Todos los derechos reservados.</p>
-            </div>
-        </footer>
-        <script src="/static/js/script_index.js"></script>
-</body>
+    </div>
 
+    <footer id="footer">
+        <!-- Pie de página con enlaces a redes sociales y derechos de autor -->
+        <div class="social-media">
+            <a href="https://www.facebook.com/"><img src="{{ url_for('static', filename='assets/facebook.png') }}" alt="Facebook"></a> <!-- Enlace a Facebook con icono -->
+            <a href="https://www.instagram.com/"><img src="{{ url_for('static', filename='assets/instagram.png') }}" alt="Instagram"></a> <!-- Enlace a Instagram con icono -->
+            <a href="https://x.com/home"><img src="{{ url_for('static', filename='assets/x.png') }}" alt="X"></a> <!-- Enlace a X con icono -->
+        </div>
+        <div class="contact">
+            <p>&copy; 2024 VolunteerVision. Todos los derechos reservados.</p> <!-- Mensaje de derechos de autor -->
+        </div>
+    </footer>
+
+    <script src="/static/js/script_index.js"></script> <!-- Enlace al archivo JavaScript para funcionalidades adicionales -->
+</body>
 </html>
