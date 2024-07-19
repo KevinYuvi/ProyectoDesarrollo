@@ -222,6 +222,7 @@ footer {
     color: white;
     padding: 2rem;
     text-align: center;
+    width: 100%;
 }
 
 
@@ -415,7 +416,7 @@ body.ingresar .aplicar-btn {
 
 
 /* Estilos para los bloques principales */
-.container > div {
+.container>div {
     margin-bottom: 20px;
 }
 
@@ -442,7 +443,8 @@ body.ingresar .aplicar-btn {
 /* Estilos para los voluntariados */
 .scroll-container {
     display: flex;
-    overflow-x: auto; /* Desplazamiento horizontal */
+    overflow-x: auto;
+    /* Desplazamiento horizontal */
     gap: 20px;
 }
 
@@ -451,7 +453,8 @@ body.ingresar .aplicar-btn {
     border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
-    min-width: 250px; /* Ancho mínimo para que los elementos sean visibles en una fila */
+    min-width: 250px;
+    /* Ancho mínimo para que los elementos sean visibles en una fila */
     box-sizing: border-box;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -505,3 +508,16 @@ body.ingresar .aplicar-btn {
     background-color: #0056b3;
 }
 
+/* Estilos para la validacion */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-error {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}

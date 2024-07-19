@@ -23,6 +23,7 @@ header nav ul {
     list-style: none;
     display: flex;
     gap: 1rem;
+    width: 100%;
 }
 
 header nav ul li {
